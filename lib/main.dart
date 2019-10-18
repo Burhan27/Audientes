@@ -1,5 +1,16 @@
 import 'package:flutter/material.dart';
+import 'router.dart';
 
+void main() {
+  runApp(MaterialApp(
+    onGenerateRoute: Router.generateRoute,
+    initialRoute: '/',
+  ));
+
+}
+
+
+/*
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -109,3 +120,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+*/
