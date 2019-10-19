@@ -22,7 +22,6 @@ class Settings extends StatelessWidget {
           ],
         ),
       width: double.infinity,
-      color: Color.fromARGB(100, 200, 50, 20),
       alignment: Alignment.center,),
     );
   }

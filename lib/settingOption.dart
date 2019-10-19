@@ -3,19 +3,22 @@ import 'package:flutter/material.dart';
 
 class settingOption extends StatefulWidget {
   String optionText;
-  bool isChecked = false;
 
   settingOption(this.optionText);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return settingOptionState();
+    return settingOptionState(optionText);
   }
 
 }
 
 class settingOptionState extends State<settingOption> {
+  String optionText;
+  bool isChecked = false;
+  settingOptionState(this.optionText);
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -37,7 +40,9 @@ class settingOptionState extends State<settingOption> {
             child: Container(child: CupertinoSwitch(
               value: isChecked,
               onChanged: (value) {
-                isChecked = !isChecked;
+                setState(() {
+                  isChecked = !isChecked;
+                });
               },
             ),
               alignment: Alignment.centerRight,),
