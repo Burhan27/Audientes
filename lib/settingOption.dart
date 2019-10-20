@@ -1,3 +1,4 @@
+import 'package:audientes/settingsOptionDropDown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -26,15 +27,8 @@ class settingOptionState extends State<settingOption> {
       child: Row(
         children: <Widget>[
           Expanded(
-            child: Text('Image'),
-            flex: 2,
-          ),
-          Expanded(
-            child: Text(
-              optionText,
-              style: new TextStyle(fontSize: 20),
-            ),
-            flex: 6,
+            child: settingOptionDropDown(optionText),
+            flex: 8,
           ),
           Expanded(
             child: Container(child: CupertinoSwitch(

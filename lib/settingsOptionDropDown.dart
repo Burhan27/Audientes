@@ -9,7 +9,7 @@ class settingOptionDropDown extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return null;
+    return settingOptionDropDownState(optionText);
   }
 
 
@@ -24,8 +24,13 @@ class settingOptionDropDownState extends State<settingOptionDropDown> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return GestureDetector(
-      child: Row(children: <Widget>[Text('Image'), Text(optionText)],),
-      onTap: ,
+      child: Row(children: <Widget>[
+        Expanded(child: Text('Image'),
+        flex: 1,),
+        Expanded(child:Container( child: Text(optionText, style: TextStyle(fontSize: 20)),
+        ),
+        flex: 5,)],),
+      onTap: ()=> Navigator.pushNamed(context, '/mixer'),
     );
   }
 
