@@ -51,12 +51,15 @@ class StartScreen extends State<MyApp> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(Icons.stars,
-                    size: MediaQuery.of(context).size.width * 0.125),
-                Icon(Icons.stars,
-                    size: MediaQuery.of(context).size.width * 0.125),
-                Icon(Icons.stars,
-                    size: MediaQuery.of(context).size.width * 0.125),
+                Icon(Icons.hearing,
+                    size: MediaQuery.of(context).size.width * 0.125,
+                    color: Colors.red),
+                Icon(Icons.bluetooth_disabled ,
+                    size: MediaQuery.of(context).size.width * 0.125,
+                    color: Colors.red),
+                Icon(Icons.home,
+                    size: MediaQuery.of(context).size.width * 0.125,
+                    color: Colors.red),
               ],
             ),
             RaisedButton(
@@ -95,22 +98,24 @@ class StartScreen extends State<MyApp> {
       //   mainAxisAlignment: ,
       //  crossAxisAlignment: ,
       //  mainAxisSize: ,
+
       children: [
         Expanded(
-          child: Icon(Icons.stars,
-              size: MediaQuery.of(context).size.width * 0.125),
+          child: Icon(Icons.directions_bus,
+              size: MediaQuery.of(context).size.width * 0.125, color: Colors.green),
           flex: 2,
         ),
         Expanded(
           child: Icon(
-            Icons.stars,
+            Icons.bluetooth_connected ,
             size: MediaQuery.of(context).size.width * 0.50,
+            color: Colors.blue,
           ),
           flex: 6,
         ),
         Expanded(
-          child: Icon(Icons.stars,
-              size: MediaQuery.of(context).size.width * 0.125),
+          child: Icon(Icons.menu,
+              size: MediaQuery.of(context).size.width * 0.125, color: Colors.white),
           flex: 2,
         ),
       ],
