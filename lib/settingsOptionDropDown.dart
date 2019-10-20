@@ -27,7 +27,9 @@ class settingOptionDropDownState extends State<settingOptionDropDown> {
       child: Row(children: <Widget>[
         Expanded(child: Text('Image'),
         flex: 1,),
-        Expanded(child:Container( child: Text(optionText, style: TextStyle(fontSize: 20)),
+        Expanded(child:Container( child: Text(optionText,
+            style: TextStyle(fontSize: 20,
+            color: Color(0xff38E2CF)),),
         ),
         flex: 5,)],),
       onTap: ()=> Navigator.pushNamed(context, '/mixer'),

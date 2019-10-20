@@ -38,7 +38,7 @@ class settingOptionState extends State<settingOption> {
                   isChecked = !isChecked;
                 });
               },
-            ),
+            activeColor: Color(0xff38E2CF),),
               alignment: Alignment.centerRight,),
             flex: 2,
           )
@@ -46,6 +46,6 @@ class settingOptionState extends State<settingOption> {
       ),
       margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
       width: double.infinity,
-    );
+    color: Color(0xff202020),);
   }
 }
