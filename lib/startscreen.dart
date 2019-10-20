@@ -87,7 +87,7 @@ class StartScreen extends State<MyApp>   {
 
     Widget threeButtons() {
     return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+    //    mainAxisAlignment: MainAxisAlignment.center,
 
         //   mainAxisAlignment: ,
     //  crossAxisAlignment: ,
@@ -121,9 +121,20 @@ class StartScreen extends State<MyApp>   {
   Widget Test() {
     return Container(
 
+        decoration: new BoxDecoration(
+          borderRadius: new BorderRadius.circular(16.0),
+          color: Colors.green,
+
+        ),
+
+        constraints: BoxConstraints.expand(
+            width: 330.0,
+            height: 100.0
+        ),
+
 
       child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           //  mainAxisSize: ,
           children: <Widget>[
 
@@ -141,6 +152,7 @@ class StartScreen extends State<MyApp>   {
              shape: new CircleBorder(),
               elevation: 2.0,
               fillColor: Colors.white,
+
       //        padding: const EdgeInsets.all(15.0),
 
     ),
@@ -172,9 +184,11 @@ class StartScreen extends State<MyApp>   {
               shape: new CircleBorder(),
               elevation: 2.0,
               fillColor: Colors.white,
-         //     padding: const EdgeInsets.all(15.0),
+             // padding: EdgeInsets.all(25.0),
+            //  padding: EdgeInsets.only(right: 100),
+              //     padding: const EdgeInsets.all(15.0),
 
-            ),
+            )
 
           ]
 
