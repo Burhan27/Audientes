@@ -1,6 +1,8 @@
 package io.flutter.plugins;
 
 import io.flutter.plugin.common.PluginRegistry;
+import com.example.systemshortcuts.SystemShortcutsPlugin;
+import com.example.volume.VolumePlugin;
 
 /**
  * Generated file. Do not edit.
@@ -10,6 +12,8 @@ public final class GeneratedPluginRegistrant {
     if (alreadyRegisteredWith(registry)) {
       return;
     }
+    SystemShortcutsPlugin.registerWith(registry.registrarFor("com.example.systemshortcuts.SystemShortcutsPlugin"));
+    VolumePlugin.registerWith(registry.registrarFor("com.example.volume.VolumePlugin"));
   }
 
   private static boolean alreadyRegisteredWith(PluginRegistry registry) {
