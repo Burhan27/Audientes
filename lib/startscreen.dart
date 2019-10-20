@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:volume/volume.dart';
 import 'dart:async';
@@ -8,7 +9,7 @@ class MyApp extends StatefulWidget {
   StartScreen createState() => StartScreen();
 }
 
-class StartScreen extends State<MyApp>   {
+class StartScreen extends State<MyApp> {
   int maxVol, currentVol;
 
   @override
@@ -34,132 +35,112 @@ class StartScreen extends State<MyApp>   {
     await Volume.setVol(i);
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF37474F),
       appBar: AppBar(
-        title: Text('First Route'),
+        backgroundColor: Color(0xff131313),
+        title: Text('Audientes'),
       ),
-
-
-
-      body: Column(
-
-
-           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
-        //  crossAxisAlignment: ,
-        //  mainAxisSize:
-
-
-        children: <Widget>[
-          Test(),
-
-
-        threeButtons(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-        Icon(Icons.stars, size: 50.0),
-        Icon(Icons.stars, size: 50.0),
-        Icon(Icons.stars, size: 50.0),
-        ],
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Test(),
+            threeButtons(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(Icons.stars,
+                    size: MediaQuery.of(context).size.width * 0.125),
+                Icon(Icons.stars,
+                    size: MediaQuery.of(context).size.width * 0.125),
+                Icon(Icons.stars,
+                    size: MediaQuery.of(context).size.width * 0.125),
+              ],
+            ),
+            RaisedButton(
+              child: Text('Initiate Hearing Test'),
+              onPressed: () {
+                //Navigate til screen
+                Navigator.pushNamed(context, '/settings');
+              },
+            ),
+          ],
         ),
-
-          RaisedButton(
-            child: Text('Initiate Hearing Test'),
-            onPressed: () {
-              //Navigate til screen
-              Navigator.pushNamed(context, '/settings');
-
-            },
-          ),
-
-        ],
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [
+              0.3,
+              0.7,
+              0.9,
+              1.0
+            ],
+                colors: [
+              Color(0xff131313),
+              Color(0xff424242),
+              Color(0xff595959),
+              Color(0xff707070)
+            ])),
       ),
-
     );
+  }
 
-
-    }
-
-    Widget threeButtons() {
+  Widget threeButtons() {
     return Row(
-    //    mainAxisAlignment: MainAxisAlignment.center,
+      //    mainAxisAlignment: MainAxisAlignment.center,
 
-        //   mainAxisAlignment: ,
-    //  crossAxisAlignment: ,
-    //  mainAxisSize: ,
+      //   mainAxisAlignment: ,
+      //  crossAxisAlignment: ,
+      //  mainAxisSize: ,
       children: [
-        Icon(Icons.stars, size: 60.0),
-        Icon(Icons.stars, size: 250.0),
-
-      RawMaterialButton(
-      onPressed: () {
-
-      },
-
-      child: new Icon(
-      Icons.menu,
-      color: Colors.blue,
-      size: 15.0,
-      ),
-      shape: new CircleBorder(),
-      elevation: 2.0,
-      fillColor: Colors.white,
-
-      )
+        Expanded(
+          child: Icon(Icons.stars,
+              size: MediaQuery.of(context).size.width * 0.125),
+          flex: 2,
+        ),
+        Expanded(
+          child: Icon(
+            Icons.stars,
+            size: MediaQuery.of(context).size.width * 0.50,
+          ),
+          flex: 6,
+        ),
+        Expanded(
+          child: Icon(Icons.stars,
+              size: MediaQuery.of(context).size.width * 0.125),
+          flex: 2,
+        ),
       ],
     );
-
-    }
-
-
+  }
 
   Widget Test() {
     return Container(
-
         decoration: new BoxDecoration(
           borderRadius: new BorderRadius.circular(16.0),
-          color: Colors.green,
-
+          color: Color(0xffBBBBBB),
         ),
-
-        constraints: BoxConstraints.expand(
-            width: 330.0,
-            height: 100.0
-        ),
-
-
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //  mainAxisSize: ,
-          children: <Widget>[
-
-
-            RawMaterialButton(
-             onPressed: () {
-
-               },
-
-            child: new Icon(
-              Icons.menu,
-               color: Colors.blue,
-             size: 10.0,
+        width: MediaQuery.of(context).size.width * 0.8,
+        child: Row(children: <Widget>[
+          Expanded(
+            child: RawMaterialButton(
+              onPressed: () {},
+              child: new Icon(
+                Icons.menu,
+                color: Colors.blue,
+                size: 10.0,
               ),
-             shape: new CircleBorder(),
+              shape: new CircleBorder(),
               elevation: 2.0,
               fillColor: Colors.white,
-
-      //        padding: const EdgeInsets.all(15.0),
-
-    ),
-
-
-
-            Slider(
+            ),
+            flex: 2,
+          ),
+          Expanded(
+            child: Slider(
               min: 0.0,
               max: maxVol + 0.0,
               divisions: maxVol,
@@ -169,9 +150,10 @@ class StartScreen extends State<MyApp>   {
                 updateVolumes();
               },
             ),
-
-
-            RawMaterialButton(
+            flex: 6,
+          ),
+          Expanded(
+            child: RawMaterialButton(
               onPressed: () {
                 //Volume.volUp();
                 // updateVolumes();
@@ -182,85 +164,59 @@ class StartScreen extends State<MyApp>   {
                 size: 10.0,
               ),
               shape: new CircleBorder(),
-              elevation: 2.0,
               fillColor: Colors.white,
-             // padding: EdgeInsets.all(25.0),
-            //  padding: EdgeInsets.only(right: 100),
-              //     padding: const EdgeInsets.all(15.0),
-
-            )
-
-          ]
-
-      )
-
-
-    );
+            ),
+            flex: 2,
+          )
+        ]));
   }
-
 
   Widget voulmeBar() {
-    return Row (
-      children: [
-        Container(
-
-          child: RawMaterialButton(
-            onPressed: () {
-         //     Volume.volDown();
-          //    updateVolumes();
-            },
-
-            child: new Icon(
-              Icons.menu,
-              color: Colors.blue,
-              size: 25.0,
-            ),
-            shape: new CircleBorder(),
-            elevation: 2.0,
-            fillColor: Colors.white,
-            padding: const EdgeInsets.all(15.0),
-
-    ),
+    return Row(children: [
+      Container(
+        child: RawMaterialButton(
+          onPressed: () {
+            //     Volume.volDown();
+            //    updateVolumes();
+          },
+          child: new Icon(
+            Icons.menu,
+            color: Colors.blue,
+            size: 25.0,
+          ),
+          shape: new CircleBorder(),
+          elevation: 2.0,
+          fillColor: Colors.white,
+          padding: const EdgeInsets.all(15.0),
         ),
-
-          Slider(
-              min: 0.0,
-              max: maxVol + 0.0,
-              divisions: maxVol,
-              value: currentVol / 1.0,
-              onChanged: (double d) {
-                setVol(d.toInt());
-                updateVolumes();
-              },
-                ),
-
-
-        Container(
-    child: RawMaterialButton(
-    onPressed: () {
-      //Volume.volUp();
-     // updateVolumes();
-    },
-    child: new Icon(
-    Icons.menu,
-    color: Colors.blue,
-    size: 25.0,
-    ),
-    shape: new CircleBorder(),
-    elevation: 2.0,
-    fillColor: Colors.white,
-    padding: const EdgeInsets.all(15.0),
-
-    ),
-        )
-      ]
-
-      );
-
-
+      ),
+      CupertinoSlider(
+        min: 0.0,
+        max: maxVol + 0.0,
+        divisions: maxVol,
+        value: currentVol / 1.0,
+        onChanged: (double d) {
+          setVol(d.toInt());
+          updateVolumes();
+        },
+      ),
+      Container(
+        child: RawMaterialButton(
+          onPressed: () {
+            //Volume.volUp();
+            // updateVolumes();
+          },
+          child: new Icon(
+            Icons.menu,
+            color: Colors.blue,
+            size: 25.0,
+          ),
+          shape: new CircleBorder(),
+          elevation: 2.0,
+          fillColor: Colors.white,
+          padding: const EdgeInsets.all(15.0),
+        ),
+      )
+    ]);
   }
-
-
-
-  }
-
+}
