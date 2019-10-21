@@ -13,7 +13,6 @@ class mixer extends StatefulWidget {
 
 
 class mixerState extends State<mixer> {
-  double d = 0.0;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -25,28 +24,29 @@ class mixerState extends State<mixer> {
         body: Container(
           child: Column(
             children: <Widget>[
-              SliderDesign("Volume", d),
-              SliderDesign("Filter", d),
-              SliderDesign("Bass", d),
-              SliderDesign("Noise", d),
+              SliderDesign("Low", 0.0),
+              SliderDesign("Mid", 0.0),
+              SliderDesign("High", 0.0),
+              SliderDesign("High +", 0.0),
             ],
           ),
           margin: EdgeInsets.fromLTRB(5, 20, 5, 10),
-        ));
+
+        ),
+    backgroundColor: Color(0xff131313),);
   }
 
   Widget SliderDesign(String text, double value) {
-
     return Container (
         child: Column(children: <Widget>[
      /*     Expanded(child: Text('Noise'),
             flex: 1,),
 */
-     Text(text),
+     Text(text, style: TextStyle(color: Color(0xff38E2CF)),),
 
       SliderTheme(
         data: SliderThemeData(
-            thumbColor: Colors.teal,
+            thumbColor: Color(0xff38E2CF),
             trackHeight: 10,
             thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15)),
 
@@ -54,9 +54,9 @@ class mixerState extends State<mixer> {
         min: 0.0,
         max: 5.0,
         divisions: 5,
-        value: d,
+        value: value,
         onChanged: (double q) {
-          d = q;
+          value = q;
           setState(() {
 
           });
@@ -65,8 +65,10 @@ class mixerState extends State<mixer> {
     ),
      // flex: 5,),
   ]
-    ));
-
+    ),
+    color: Color(0xff202020),
+    margin: EdgeInsets.fromLTRB(0, 2.5, 0, 5),
+    padding: EdgeInsets.fromLTRB(0, 5, 0, 0),);
 
   }
 
