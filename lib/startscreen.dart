@@ -71,23 +71,7 @@ class StartScreen extends State<MyApp> {
             ),
           ],
         ),
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [
-              0.3,
-              0.7,
-              0.9,
-              1.0
-            ],
-                colors: [
-              Color(0xff131313),
-              Color(0xff424242),
-              Color(0xff595959),
-              Color(0xff707070)
-            ])),
-      ),
+      color: Color(0xff131313),),
     );
   }
 
@@ -126,7 +110,7 @@ class StartScreen extends State<MyApp> {
     return Container(
         decoration: new BoxDecoration(
           borderRadius: new BorderRadius.circular(16.0),
-          color: Color(0xffBBBBBB),
+          color: Color(0xff303030),
         ),
         width: MediaQuery.of(context).size.width * 0.8,
         child: Row(children: <Widget>[
@@ -150,6 +134,7 @@ class StartScreen extends State<MyApp> {
               max: maxVol + 0.0,
               divisions: maxVol,
               value: currentVol / 1.0,
+              activeColor: Color(0xff38E2CF),
               onChanged: (double d) {
                 setVol(d.toInt());
                 updateVolumes();
