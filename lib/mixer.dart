@@ -13,6 +13,7 @@ class mixer extends StatefulWidget {
 
 
 class mixerState extends State<mixer> {
+  double d = 0.0;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -54,9 +55,9 @@ class mixerState extends State<mixer> {
         min: 0.0,
         max: 5.0,
         divisions: 5,
-        value: value,
+        value: d,
         onChanged: (double q) {
-          value = q;
+          d = q;
           setState(() {
 
           });
