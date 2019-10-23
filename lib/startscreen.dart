@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:volume/volume.dart';
 import 'dart:async';
-import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -48,19 +48,53 @@ class StartScreen extends State<MyApp> {
           children: <Widget>[
             Test(),
             threeButtons(),
-            Row(
+            Container(
+              decoration: new BoxDecoration(
+                borderRadius: new BorderRadius.circular(16.0),
+                color: Color(0xff303030),
+
+              ),
+              width: MediaQuery
+                .of(context)
+                .size
+                .width * 0.8,
+              height: MediaQuery
+                .of(context)
+                .size
+                .width * 0.3,
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(Icons.hearing,
-                    size: MediaQuery.of(context).size.width * 0.125,
-                    color: Colors.red),
-                Icon(Icons.bluetooth_disabled ,
-                    size: MediaQuery.of(context).size.width * 0.125,
+                frontScreenIcon(Colors.blue, Colors.white, MediaQuery
+                    .of(context)
+                    .size
+                    .width * 0.07, Icons.radio, 1, 'Music'),
+
+                frontScreenIcon(Colors.blue, Colors.white, MediaQuery
+                    .of(context)
+                    .size
+                    .width * 0.07, Icons.home, 1, 'Home'),
+
+                frontScreenIcon(Colors.blue, Colors.white, MediaQuery
+                    .of(context)
+                    .size
+                    .width * 0.07, Icons.work, 1, 'Work'),
+
+/*
+                Icon(Icons.bluetooth_disabled,
+                    size: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.125,
                     color: Colors.red),
                 Icon(Icons.home,
-                    size: MediaQuery.of(context).size.width * 0.125,
-                    color: Colors.red),
+                    size: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.125,
+                    color: Colors.red),*/
               ],
+            ),
             ),
             RaisedButton(
               child: Text('Initiate Hearing Test'),
@@ -71,7 +105,7 @@ class StartScreen extends State<MyApp> {
             ),
           ],
         ),
-      color: Color(0xff131313),),
+        color: Color(0xff131313),),
     );
   }
 
@@ -84,22 +118,29 @@ class StartScreen extends State<MyApp> {
       //  mainAxisSize: ,
 
       children: [
-        Expanded(
+     /*   Expanded(
           child: Icon(Icons.directions_bus,
-              size: MediaQuery.of(context).size.width * 0.125, color: Colors.green),
+              size: MediaQuery
+                  .of(context)
+                  .size
+                  .width * 0.125, color: Colors.green),
           flex: 2,
-        ),
+        ), */
         Expanded(
-          child: Icon(
-            Icons.bluetooth_connected ,
-            size: MediaQuery.of(context).size.width * 0.50,
-            color: Colors.blue,
-          ),
+
+          child: frontScreenIcon(Colors.blue, Colors.white, MediaQuery
+              .of(context)
+              .size
+              .width * 0.50, Icons.bluetooth_connected, 0, ''),
+
           flex: 6,
         ),
         Expanded(
           child: Icon(Icons.menu,
-              size: MediaQuery.of(context).size.width * 0.125, color: Colors.white),
+              size: MediaQuery
+                  .of(context)
+                  .size
+                  .width * 0.125, color: Colors.white),
           flex: 2,
         ),
       ],
@@ -112,13 +153,16 @@ class StartScreen extends State<MyApp> {
           borderRadius: new BorderRadius.circular(16.0),
           color: Color(0xff303030),
         ),
-        width: MediaQuery.of(context).size.width * 0.8,
+        width: MediaQuery
+            .of(context)
+            .size
+            .width * 0.8,
         child: Row(children: <Widget>[
           Expanded(
             child: RawMaterialButton(
               onPressed: () {},
               child: new Icon(
-                Icons.menu,
+                FontAwesomeIcons.gamepad,
                 color: Colors.blue,
                 size: 10.0,
               ),
@@ -206,7 +250,37 @@ class StartScreen extends State<MyApp> {
           fillColor: Colors.white,
           padding: const EdgeInsets.all(15.0),
         ),
-      )
+      ),
     ]);
   }
+
+  Widget frontScreenIcon(Color iconColor, Color fillColor, double size,
+      IconData icon, int onClick, String text) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+
+      RawMaterialButton(
+        onPressed: () {
+
+        },
+        child: new Icon(
+          icon,
+          color: iconColor,
+          size: size,
+        ),
+        shape: new CircleBorder(),
+        elevation: 2.0,
+        fillColor: fillColor,
+        padding: const EdgeInsets.all(15.0),
+       ),
+          Text(text,style: TextStyle(
+            color: Colors.teal
+          ),
+          )
+    ]);
+  }
+
+
+
 }

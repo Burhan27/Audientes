@@ -24,8 +24,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+#https://pub.dev/packages/font_awesome_flutter Made by Brian Egan Found 24/10/2019
+  font_awesome_flutter: ^8.5.0
+
   #https://pub.dev/packages/volume#-installing-tab- Made by Aman Malhotra Found 19/10/2019
   volume: ^0.1.0
+
+
 
 dev_dependencies:
   flutter_test:
