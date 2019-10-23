@@ -66,7 +66,7 @@ class StartScreen extends State<MyApp> {
               child: Text('Initiate Hearing Test'),
               onPressed: () {
                 //Navigate til screen
-                Navigator.pushNamed(context, '/settings');
+                Navigator.pushNamed(context, '/hearTest');
               },
             ),
           ],

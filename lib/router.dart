@@ -1,3 +1,4 @@
+import 'package:audientes/HearingTest.dart';
 import 'package:audientes/mixer.dart';
 import 'package:flutter/material.dart';
 import 'startscreen.dart';
@@ -15,6 +16,8 @@ class Router{
         return MaterialPageRoute(builder: (_) => Settings());
       case '/mixer':
         return MaterialPageRoute(builder: (_) => mixer());
+      case '/hearTest':
+        return MaterialPageRoute(builder: (_) => HearingTest());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
