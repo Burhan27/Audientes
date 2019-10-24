@@ -162,12 +162,11 @@ class StartScreen extends State<MyApp> {
             child: RawMaterialButton(
               onPressed: () {},
               child: new Icon(
-                FontAwesomeIcons.gamepad,
+                FontAwesomeIcons.volumeDown,
                 color: Colors.blue,
-                size: 10.0,
+                size: 20.0,
               ),
               shape: new CircleBorder(),
-              elevation: 2.0,
               fillColor: Colors.white,
             ),
             flex: 2,
@@ -193,9 +192,9 @@ class StartScreen extends State<MyApp> {
                 // updateVolumes();
               },
               child: new Icon(
-                Icons.menu,
+                FontAwesomeIcons.volumeUp,
                 color: Colors.blue,
-                size: 10.0,
+                size: 20.0,
               ),
               shape: new CircleBorder(),
               fillColor: Colors.white,
@@ -261,8 +260,9 @@ class StartScreen extends State<MyApp> {
         children: [
 
       RawMaterialButton(
-        onPressed: () {
+        onPressed: ( ) {
 
+               
         },
         child: new Icon(
           icon,
