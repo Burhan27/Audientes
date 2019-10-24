@@ -100,7 +100,7 @@ class StartScreen extends State<MyApp> {
               child: Text('Initiate Hearing Test'),
               onPressed: () {
                 //Navigate til screen
-                Navigator.pushNamed(context, '/settings');
+             //   Navigator.pushNamed(context, '/settings');
               },
             ),
           ],
@@ -136,11 +136,25 @@ class StartScreen extends State<MyApp> {
           flex: 6,
         ),
         Expanded(
-          child: Icon(Icons.menu,
+          child :RawMaterialButton(
+            onPressed: ( ) {
+              Navigator.pushNamed(context, '/settings');
+            },
+            child: new Icon(
+              Icons.menu,
+              color: Colors.white,
               size: MediaQuery
                   .of(context)
                   .size
-                  .width * 0.125, color: Colors.white),
+                  .width * 0.125,
+            ),
+            shape: new CircleBorder(),
+            elevation: 2.0,
+            padding: const EdgeInsets.all(15.0),
+          ),
+
+
+
           flex: 2,
         ),
       ],
@@ -262,8 +276,7 @@ class StartScreen extends State<MyApp> {
       RawMaterialButton(
         onPressed: ( ) {
 
-               
-        },
+          },
         child: new Icon(
           icon,
           color: iconColor,
