@@ -3,6 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:volume/volume.dart';
 import 'dart:async';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:system_shortcuts/system_shortcuts.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+
+void main() {
+    runApp(new MyApp());
+  }
+
+
 
 class MyApp extends StatefulWidget {
   @override
@@ -11,6 +20,10 @@ class MyApp extends StatefulWidget {
 
 class StartScreen extends State<MyApp> {
   int maxVol, currentVol;
+
+  static const MethodChannel _channel = const MethodChannel('system_shortcuts');
+
+
 
   @override
   void initState() {
@@ -100,7 +113,7 @@ class StartScreen extends State<MyApp> {
               child: Text('Initiate Hearing Test'),
               onPressed: () {
                 //Navigate til screen
-                Navigator.pushNamed(context, '/settings');
+             //   Navigator.pushNamed(context, '/settings');
               },
             ),
           ],
@@ -136,11 +149,25 @@ class StartScreen extends State<MyApp> {
           flex: 6,
         ),
         Expanded(
-          child: Icon(Icons.menu,
+          child :RawMaterialButton(
+            onPressed: ( ) {
+              Navigator.pushNamed(context, '/settings');
+            },
+            child: new Icon(
+              Icons.menu,
+              color: Colors.white,
               size: MediaQuery
                   .of(context)
                   .size
-                  .width * 0.125, color: Colors.white),
+                  .width * 0.125,
+            ),
+            shape: new CircleBorder(),
+            elevation: 2.0,
+            padding: const EdgeInsets.all(15.0),
+          ),
+
+
+
           flex: 2,
         ),
       ],
@@ -172,24 +199,29 @@ class StartScreen extends State<MyApp> {
             flex: 2,
           ),
           Expanded(
+            child: SliderTheme(
+            data: SliderThemeData(
+            thumbColor: Color(0xff38E2CF),
+            trackHeight: 10,
+            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.5)),
             child: Slider(
               min: 0.0,
               max: maxVol + 0.0,
-              divisions: maxVol,
+             // divisions: maxVol,
               value: currentVol / 1.0,
               activeColor: Color(0xff38E2CF),
               onChanged: (double d) {
                 setVol(d.toInt());
                 updateVolumes();
               },
-            ),
+            ),),
             flex: 6,
           ),
           Expanded(
             child: RawMaterialButton(
-              onPressed: () {
-                //Volume.volUp();
-                // updateVolumes();
+              onPressed: () async {
+                await SystemShortcuts.volUp();
+                 updateVolumes();
               },
               child: new Icon(
                 FontAwesomeIcons.volumeUp,
@@ -204,55 +236,6 @@ class StartScreen extends State<MyApp> {
         ]));
   }
 
-  Widget voulmeBar() {
-    return Row(children: [
-      Container(
-        child: RawMaterialButton(
-          onPressed: () {
-            //     Volume.volDown();
-            //    updateVolumes();
-          },
-          child: new Icon(
-            Icons.menu,
-            color: Colors.blue,
-            size: 25.0,
-          ),
-          shape: new CircleBorder(),
-          elevation: 2.0,
-          fillColor: Colors.white,
-          padding: const EdgeInsets.all(15.0),
-        ),
-      ),
-      CupertinoSlider(
-        min: 0.0,
-        max: maxVol + 0.0,
-        divisions: maxVol,
-        value: currentVol / 1.0,
-        onChanged: (double d) {
-          setVol(d.toInt());
-          updateVolumes();
-        },
-      ),
-      Container(
-        child: RawMaterialButton(
-          onPressed: () {
-            //Volume.volUp();
-            // updateVolumes();
-          },
-          child: new Icon(
-            Icons.menu,
-            color: Colors.blue,
-            size: 25.0,
-          ),
-          shape: new CircleBorder(),
-          elevation: 2.0,
-          fillColor: Colors.white,
-          padding: const EdgeInsets.all(15.0),
-        ),
-      ),
-    ]);
-  }
-
   Widget frontScreenIcon(Color iconColor, Color fillColor, double size,
       IconData icon, int onClick, String text) {
     return Column(
@@ -262,8 +245,7 @@ class StartScreen extends State<MyApp> {
       RawMaterialButton(
         onPressed: ( ) {
 
-               
-        },
+          },
         child: new Icon(
           icon,
           color: iconColor,
