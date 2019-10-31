@@ -19,6 +19,13 @@ class MyApp extends StatefulWidget {
 }
 
 class StartScreen extends State<MyApp> {
+  int _selectedPage = 0;
+  final _pageOptions = [
+    Text('Item 1'),
+    Text('Item 2'),
+    Text('Item 3'),
+  ];
+
   int maxVol, currentVol;
 
   static const MethodChannel _channel = const MethodChannel('system_shortcuts');
@@ -118,7 +125,26 @@ class StartScreen extends State<MyApp> {
             ),
           ],
         ),
-        color: Color(0xff131313),),
+        color: Color(0xff131313),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedPage,
+        onTap: (int index) {
+          setState(() {
+              _selectedPage = index;
+          });
+        },
+        items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text("Home")
+        ),
+        BottomNavigationBarItem(
+        icon: Icon(Icons.menu),
+        title: Text("Menu")
+        )
+        ]
+      ),
     );
   }
 
@@ -172,6 +198,9 @@ class StartScreen extends State<MyApp> {
         ),
       ],
     );
+
+
+
   }
 
   Widget Test() {
