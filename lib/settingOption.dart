@@ -4,21 +4,25 @@ import 'package:flutter/material.dart';
 
 class settingOption extends StatefulWidget {
   String optionText;
+  IconData iconData;
+  Color color;
 
-  settingOption(this.optionText);
+  settingOption(this.color, this.iconData, this.optionText);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return settingOptionState(optionText);
+    return settingOptionState(color,iconData,optionText);
   }
 
 }
 
 class settingOptionState extends State<settingOption> {
   String optionText;
+  IconData iconData;
+  Color color;
   bool isChecked = false;
-  settingOptionState(this.optionText);
+  settingOptionState(this.color, this.iconData, this.optionText);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +31,7 @@ class settingOptionState extends State<settingOption> {
       child: Row(
         children: <Widget>[
           Expanded(
-            child: settingOptionDropDown(optionText),
+            child: settingOptionDropDown(color, iconData, optionText),
             flex: 8,
           ),
           Expanded(

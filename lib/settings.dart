@@ -23,10 +23,9 @@ class Settings extends StatelessWidget {
       body: Container(
         child: Column(
           children: <Widget>[
-            settingOption('Noisy'),
-            settingOption('TV'),
-            settingOption('Movie'),
-            settingOption('Outdoor'),
+            settingOption(Colors.red, Icons.radio,'Radio'),
+            settingOption(Colors.cyan, Icons.home,'Home'),
+            settingOption(Colors.amberAccent, Icons.work,'Work'),
             RaisedButton(
               onPressed: () {
                 Navigator.pop(context);

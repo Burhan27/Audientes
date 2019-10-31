@@ -2,7 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:volume/volume.dart';
 import 'dart:async';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:system_shortcuts/system_shortcuts.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+
+void main() {
+    runApp(new MyApp());
+  }
+
+
 
 class MyApp extends StatefulWidget {
   @override
@@ -10,7 +19,18 @@ class MyApp extends StatefulWidget {
 }
 
 class StartScreen extends State<MyApp> {
+  int _selectedPage = 0;
+  final _pageOptions = [
+    Text('Item 1'),
+    Text('Item 2'),
+    Text('Item 3'),
+  ];
+
   int maxVol, currentVol;
+
+  static const MethodChannel _channel = const MethodChannel('system_shortcuts');
+
+
 
   @override
   void initState() {
@@ -48,30 +68,83 @@ class StartScreen extends State<MyApp> {
           children: <Widget>[
             Test(),
             threeButtons(),
-            Row(
+            Container(
+              decoration: new BoxDecoration(
+                borderRadius: new BorderRadius.circular(16.0),
+                color: Color(0xff303030),
+
+              ),
+              width: MediaQuery
+                .of(context)
+                .size
+                .width * 0.8,
+              height: MediaQuery
+                .of(context)
+                .size
+                .width * 0.3,
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Icon(Icons.hearing,
-                    size: MediaQuery.of(context).size.width * 0.125,
-                    color: Colors.red),
-                Icon(Icons.bluetooth_disabled ,
-                    size: MediaQuery.of(context).size.width * 0.125,
+                frontScreenIcon(Colors.blue, Colors.white, MediaQuery
+                    .of(context)
+                    .size
+                    .width * 0.07, Icons.radio, 1, 'Music'),
+
+                frontScreenIcon(Colors.blue, Colors.white, MediaQuery
+                    .of(context)
+                    .size
+                    .width * 0.07, Icons.home, 1, 'Home'),
+
+                frontScreenIcon(Colors.blue, Colors.white, MediaQuery
+                    .of(context)
+                    .size
+                    .width * 0.07, Icons.work, 1, 'Work'),
+
+/*
+                Icon(Icons.bluetooth_disabled,
+                    size: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.125,
                     color: Colors.red),
                 Icon(Icons.home,
-                    size: MediaQuery.of(context).size.width * 0.125,
-                    color: Colors.red),
+                    size: MediaQuery
+                        .of(context)
+                        .size
+                        .width * 0.125,
+                    color: Colors.red),*/
               ],
+            ),
             ),
             RaisedButton(
               child: Text('Initiate Hearing Test'),
               onPressed: () {
                 //Navigate til screen
-                Navigator.pushNamed(context, '/settings');
+             //   Navigator.pushNamed(context, '/settings');
               },
             ),
           ],
         ),
-      color: Color(0xff131313),),
+        color: Color(0xff131313),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedPage,
+        onTap: (int index) {
+          setState(() {
+              _selectedPage = index;
+          });
+        },
+        items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text("Home")
+        ),
+        BottomNavigationBarItem(
+        icon: Icon(Icons.menu),
+        title: Text("Menu")
+        )
+        ]
+      ),
     );
   }
 
@@ -84,26 +157,50 @@ class StartScreen extends State<MyApp> {
       //  mainAxisSize: ,
 
       children: [
-        Expanded(
+     /*   Expanded(
           child: Icon(Icons.directions_bus,
-              size: MediaQuery.of(context).size.width * 0.125, color: Colors.green),
+              size: MediaQuery
+                  .of(context)
+                  .size
+                  .width * 0.125, color: Colors.green),
           flex: 2,
-        ),
+        ), */
         Expanded(
-          child: Icon(
-            Icons.bluetooth_connected ,
-            size: MediaQuery.of(context).size.width * 0.50,
-            color: Colors.blue,
-          ),
+
+          child: frontScreenIcon(Colors.blue, Colors.white, MediaQuery
+              .of(context)
+              .size
+              .width * 0.50, Icons.bluetooth_connected, 0, ''),
+
           flex: 6,
         ),
         Expanded(
-          child: Icon(Icons.menu,
-              size: MediaQuery.of(context).size.width * 0.125, color: Colors.white),
+          child :RawMaterialButton(
+            onPressed: ( ) {
+              Navigator.pushNamed(context, '/settings');
+            },
+            child: new Icon(
+              Icons.menu,
+              color: Colors.white,
+              size: MediaQuery
+                  .of(context)
+                  .size
+                  .width * 0.125,
+            ),
+            shape: new CircleBorder(),
+            elevation: 2.0,
+            padding: const EdgeInsets.all(15.0),
+          ),
+
+
+
           flex: 2,
         ),
       ],
     );
+
+
+
   }
 
   Widget Test() {
@@ -112,46 +209,53 @@ class StartScreen extends State<MyApp> {
           borderRadius: new BorderRadius.circular(16.0),
           color: Color(0xff303030),
         ),
-        width: MediaQuery.of(context).size.width * 0.8,
+        width: MediaQuery
+            .of(context)
+            .size
+            .width * 0.8,
         child: Row(children: <Widget>[
           Expanded(
             child: RawMaterialButton(
               onPressed: () {},
               child: new Icon(
-                Icons.menu,
+                FontAwesomeIcons.volumeDown,
                 color: Colors.blue,
-                size: 10.0,
+                size: 20.0,
               ),
               shape: new CircleBorder(),
-              elevation: 2.0,
               fillColor: Colors.white,
             ),
             flex: 2,
           ),
           Expanded(
+            child: SliderTheme(
+            data: SliderThemeData(
+            thumbColor: Color(0xff38E2CF),
+            trackHeight: 10,
+            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.5)),
             child: Slider(
               min: 0.0,
               max: maxVol + 0.0,
-              divisions: maxVol,
+             // divisions: maxVol,
               value: currentVol / 1.0,
               activeColor: Color(0xff38E2CF),
               onChanged: (double d) {
                 setVol(d.toInt());
                 updateVolumes();
               },
-            ),
+            ),),
             flex: 6,
           ),
           Expanded(
             child: RawMaterialButton(
-              onPressed: () {
-                //Volume.volUp();
-                // updateVolumes();
+              onPressed: () async {
+                await SystemShortcuts.volUp();
+                 updateVolumes();
               },
               child: new Icon(
-                Icons.menu,
+                FontAwesomeIcons.volumeUp,
                 color: Colors.blue,
-                size: 10.0,
+                size: 20.0,
               ),
               shape: new CircleBorder(),
               fillColor: Colors.white,
@@ -161,52 +265,33 @@ class StartScreen extends State<MyApp> {
         ]));
   }
 
-  Widget voulmeBar() {
-    return Row(children: [
-      Container(
-        child: RawMaterialButton(
-          onPressed: () {
-            //     Volume.volDown();
-            //    updateVolumes();
+  Widget frontScreenIcon(Color iconColor, Color fillColor, double size,
+      IconData icon, int onClick, String text) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+
+      RawMaterialButton(
+        onPressed: ( ) {
+
           },
-          child: new Icon(
-            Icons.menu,
-            color: Colors.blue,
-            size: 25.0,
-          ),
-          shape: new CircleBorder(),
-          elevation: 2.0,
-          fillColor: Colors.white,
-          padding: const EdgeInsets.all(15.0),
+        child: new Icon(
+          icon,
+          color: iconColor,
+          size: size,
         ),
-      ),
-      CupertinoSlider(
-        min: 0.0,
-        max: maxVol + 0.0,
-        divisions: maxVol,
-        value: currentVol / 1.0,
-        onChanged: (double d) {
-          setVol(d.toInt());
-          updateVolumes();
-        },
-      ),
-      Container(
-        child: RawMaterialButton(
-          onPressed: () {
-            //Volume.volUp();
-            // updateVolumes();
-          },
-          child: new Icon(
-            Icons.menu,
-            color: Colors.blue,
-            size: 25.0,
+        shape: new CircleBorder(),
+        elevation: 2.0,
+        fillColor: fillColor,
+        padding: const EdgeInsets.all(15.0),
+       ),
+          Text(text,style: TextStyle(
+            color: Colors.teal
           ),
-          shape: new CircleBorder(),
-          elevation: 2.0,
-          fillColor: Colors.white,
-          padding: const EdgeInsets.all(15.0),
-        ),
-      )
+          )
     ]);
   }
+
+
+
 }
