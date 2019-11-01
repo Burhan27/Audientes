@@ -17,7 +17,7 @@ class BluetoothButtonState extends State<BluetoothButton> {
     return Container(
       child: GestureDetector(
         child: Icon(Icons.bluetooth),
-        onTap: ()=> OpenSettings.openMainSetting(),
+        onTap: ()=> OpenSettings.openBluetoothSetting(),
       ),
     );
   }
