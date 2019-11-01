@@ -1,3 +1,4 @@
+import 'package:audientes/BluetoothButton.dart';
 import 'package:audientes/settingOption.dart';
 import 'package:flutter/material.dart';
 
@@ -26,12 +27,7 @@ class Settings extends StatelessWidget {
             settingOption(Colors.red, Icons.radio,'Radio'),
             settingOption(Colors.cyan, Icons.home,'Home'),
             settingOption(Colors.amberAccent, Icons.work,'Work'),
-            RaisedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('Back'),
-            )
+           BluetoothButton(),
           ],
         ),
         width: double.infinity,
