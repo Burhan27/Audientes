@@ -88,29 +88,8 @@ class StartScreen extends State<MyApp> {
                     .of(context)
                     .size
                     .width * 0.07, Icons.work, 1, 'Work'),
-
-/*
-                Icon(Icons.bluetooth_disabled,
-                    size: MediaQuery
-                        .of(context)
-                        .size
-                        .width * 0.125,
-                    color: Colors.red),
-                Icon(Icons.home,
-                    size: MediaQuery
-                        .of(context)
-                        .size
-                        .width * 0.125,
-                    color: Colors.red),*/
               ],
             ),
-            ),
-            RaisedButton(
-              child: Text('Initiate Hearing Test'),
-              onPressed: () {
-                //Navigate til screen
-             //   Navigator.pushNamed(context, '/settings');
-              },
             ),
           ],
         ),

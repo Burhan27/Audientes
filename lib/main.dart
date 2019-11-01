@@ -3,6 +3,7 @@ import 'router.dart';
 import 'startscreen.dart';
 import 'mixer.dart';
 import 'settings.dart';
+import 'hearingTest.dart';
 
 void main()  => runApp(MainApp( ));
   //  onGenerateRoute: Router.generateRoute,
@@ -28,8 +29,8 @@ class _NaviBarState extends State<NaviBar> {
   int _selectedPage = 0;
   final _pageOptions = [
     MyApp(),
-    mixer(),
     Settings(),
+    HeartinTest(),
   ];
 
   void _onTabTapped(int index) {
