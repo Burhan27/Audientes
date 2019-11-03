@@ -27,6 +27,7 @@ dependencies:
 #https://pub.dev/packages/font_awesome_flutter Made by Brian Egan Found 24/10/2019
   font_awesome_flutter: ^8.5.0
 
+  fl_chart: ^0.3.4
 
   flutter_bluetooth_serial: ^0.2.2
   #https://pub.dev/packages/volume#-installing-tab- Made by Aman Malhotra Found 19/10/2019
