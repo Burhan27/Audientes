@@ -5,8 +5,7 @@ import 'dart:async';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:system_shortcuts/system_shortcuts.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
-import 'package:audientes/mixer.dart';
+
 
 class MyApp extends StatefulWidget {
   @override
@@ -224,8 +223,8 @@ class StartScreen extends State<MyApp> {
         children: [
 
       RawMaterialButton(
-        onPressed: ( ) {
-
+        onPressed: (
+            ) {
           },
         child: new Icon(
           icon,
