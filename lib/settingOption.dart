@@ -1,4 +1,5 @@
 import 'package:audientes/settingsOptionDropDown.dart';
+import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -6,15 +7,15 @@ class settingOption extends StatefulWidget {
   String optionText;
   IconData iconData;
   Color color;
+  bool expanded;
 
-  settingOption(this.color, this.iconData, this.optionText);
+  settingOption(this.color, this.iconData, this.optionText, this.expanded);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return settingOptionState(color,iconData,optionText);
+    return settingOptionState(color, iconData, optionText, expanded);
   }
-
 }
 
 class settingOptionState extends State<settingOption> {
@@ -22,11 +23,22 @@ class settingOptionState extends State<settingOption> {
   IconData iconData;
   Color color;
   bool isChecked = false;
-  settingOptionState(this.color, this.iconData, this.optionText);
+  bool expanded;
+  int B;
 
-  @override
+  settingOptionState(this.color, this.iconData, this.optionText, this.expanded){
+    if(expanded){
+      B = 0;
+    }
+    else{
+       B = 10;
+    }
+  }
+
+
+
+@override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       child: Row(
         children: <Widget>[
