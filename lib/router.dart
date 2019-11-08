@@ -13,8 +13,6 @@ class Router{
         return MaterialPageRoute(builder: (_) => MyApp());
       case '/settings':
         return MaterialPageRoute(builder: (_) => Settings());
-      case '/mixer':
-        return MaterialPageRoute(builder: (_) => mixer());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

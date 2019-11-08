@@ -1,3 +1,4 @@
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 
 class settingOptionDropDown extends StatefulWidget {
@@ -18,14 +19,11 @@ class settingOptionDropDownState extends State<settingOptionDropDown> {
   String optionText;
   IconData iconData;
   Color color;
-
   settingOptionDropDownState(this.color,this.iconData,this.optionText);
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return GestureDetector(
-      child: Row(
+     return Row(
         children: <Widget>[
           Expanded(
             child:Container( child: Icon(
@@ -47,8 +45,6 @@ class settingOptionDropDownState extends State<settingOptionDropDown> {
             flex: 5,
           )
         ],
-      ),
-      onTap: () => Navigator.pushNamed(context, '/mixer'),
     );
   }
 }

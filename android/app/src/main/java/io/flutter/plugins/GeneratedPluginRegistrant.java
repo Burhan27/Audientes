@@ -2,7 +2,11 @@ package io.flutter.plugins;
 
 import io.flutter.plugin.common.PluginRegistry;
 import io.github.edufolly.flutterbluetoothserial.FlutterBluetoothSerialPlugin;
+<<<<<<< HEAD
 import com.kiwi.fluttercrashlytics.FlutterCrashlyticsPlugin;
+=======
+import alihoseinpoor.com.open_settings.OpenSettingsPlugin;
+>>>>>>> BluetoothConnection
 import com.example.systemshortcuts.SystemShortcutsPlugin;
 import com.example.volume.VolumePlugin;
 
@@ -15,7 +19,11 @@ public final class GeneratedPluginRegistrant {
       return;
     }
     FlutterBluetoothSerialPlugin.registerWith(registry.registrarFor("io.github.edufolly.flutterbluetoothserial.FlutterBluetoothSerialPlugin"));
+<<<<<<< HEAD
     FlutterCrashlyticsPlugin.registerWith(registry.registrarFor("com.kiwi.fluttercrashlytics.FlutterCrashlyticsPlugin"));
+=======
+    OpenSettingsPlugin.registerWith(registry.registrarFor("alihoseinpoor.com.open_settings.OpenSettingsPlugin"));
+>>>>>>> BluetoothConnection
     SystemShortcutsPlugin.registerWith(registry.registrarFor("com.example.systemshortcuts.SystemShortcutsPlugin"));
     VolumePlugin.registerWith(registry.registrarFor("com.example.volume.VolumePlugin"));
   }
