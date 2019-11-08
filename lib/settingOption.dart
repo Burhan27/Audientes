@@ -60,7 +60,7 @@ class settingOptionState extends State<settingOption> {
           )
         ],
       ),
-      margin: EdgeInsets.fromLTRB(5, 10, 5, 10),
+      margin: EdgeInsets.fromLTRB(5, 20, 5, 0),
       width: double.infinity,
     color: Color(0xff202020),);
   }

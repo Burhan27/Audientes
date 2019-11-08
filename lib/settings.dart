@@ -48,7 +48,8 @@ class Settings extends StatelessWidget {
                         )
                       ],
                     ),
-                    color: Color(0xff202020),
+                    color: Color(0xff303030),
+                    width: MediaQuery.of(context).size.width * 0.95 ,
                     margin: EdgeInsets.fromLTRB(5, 0, 5, 10),
                     padding: EdgeInsets.fromLTRB(0, 0, 0, 5),)
                   ],
