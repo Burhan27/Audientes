@@ -5,12 +5,6 @@ import 'dart:async';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:system_shortcuts/system_shortcuts.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
-
-void main() {
-    runApp(new MyApp());
-  }
-
 
 
 class MyApp extends StatefulWidget {
@@ -19,18 +13,9 @@ class MyApp extends StatefulWidget {
 }
 
 class StartScreen extends State<MyApp> {
-  int _selectedPage = 0;
-  final _pageOptions = [
-    Text('Item 1'),
-    Text('Item 2'),
-    Text('Item 3'),
-  ];
-
-  int maxVol, currentVol;
+  int maxVol = 0, currentVol = 0;
 
   static const MethodChannel _channel = const MethodChannel('system_shortcuts');
-
-
 
   @override
   void initState() {
@@ -45,9 +30,12 @@ class StartScreen extends State<MyApp> {
 
   updateVolumes() async {
     // get Max Volume
+    print(Text("hej" + maxVol.toString()));
     maxVol = await Volume.getMaxVol;
+ //   maxVol = 15;
     // get Current Volume
     currentVol = await Volume.getVol;
+ //   currentVol = 4;
     setState(() {});
   }
 
@@ -99,51 +87,12 @@ class StartScreen extends State<MyApp> {
                     .of(context)
                     .size
                     .width * 0.07, Icons.work, 1, 'Work'),
-
-/*
-                Icon(Icons.bluetooth_disabled,
-                    size: MediaQuery
-                        .of(context)
-                        .size
-                        .width * 0.125,
-                    color: Colors.red),
-                Icon(Icons.home,
-                    size: MediaQuery
-                        .of(context)
-                        .size
-                        .width * 0.125,
-                    color: Colors.red),*/
               ],
             ),
-            ),
-            RaisedButton(
-              child: Text('Initiate Hearing Test'),
-              onPressed: () {
-                //Navigate til screen
-             //   Navigator.pushNamed(context, '/settings');
-              },
             ),
           ],
         ),
         color: Color(0xff131313),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedPage,
-        onTap: (int index) {
-          setState(() {
-              _selectedPage = index;
-          });
-        },
-        items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          title: Text("Home")
-        ),
-        BottomNavigationBarItem(
-        icon: Icon(Icons.menu),
-        title: Text("Menu")
-        )
-        ]
       ),
     );
   }
@@ -174,12 +123,14 @@ class StartScreen extends State<MyApp> {
 
           flex: 6,
         ),
-        Expanded(
+          /*     Expanded(
           child :RawMaterialButton(
             onPressed: ( ) {
               Navigator.pushNamed(context, '/settings');
             },
-            child: new Icon(
+            child:
+
+           new Icon(
               Icons.menu,
               color: Colors.white,
               size: MediaQuery
@@ -195,7 +146,7 @@ class StartScreen extends State<MyApp> {
 
 
           flex: 2,
-        ),
+        ), */
       ],
     );
 
@@ -272,8 +223,8 @@ class StartScreen extends State<MyApp> {
         children: [
 
       RawMaterialButton(
-        onPressed: ( ) {
-
+        onPressed: (
+            ) {
           },
         child: new Icon(
           icon,
