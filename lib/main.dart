@@ -60,8 +60,7 @@ class _NaviBarState extends State<NaviBar> {
   int _selectedPage = 0;
   final _pageOptions = [
     MyApp(),
-  //  Settings(),
-
+    Settings(),
     HeartinTest(),
   ];
 
@@ -87,7 +86,7 @@ class _NaviBarState extends State<NaviBar> {
           ),
           new BottomNavigationBarItem(
             icon: Icon(Icons.format_list_bulleted),
-            title: Text('Volume Mixer'),
+            title: Text('Setting'),
           ),
           new BottomNavigationBarItem(
             icon: Icon(Icons.hearing),
