@@ -1,0 +1,99 @@
+package dk.sens.android.ble.generic;
+
+/*
+ * Copyright (c) 2016 SENS Innovation ApS <morten@sens.dk>
+ * All rights reserved.
+ *
+ * - Redistribution and use in source and binary forms, with or without
+ *   modification, are permitted only with explicit permission from the copyright
+ *   owner.
+ * - Any redistributions of source code must retain the above copyright
+ *   notice, this list of conditions and the following disclaimer.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ */
+
+import java.util.UUID;
+import android.util.Log;
+
+import dk.sens.android.ble.BLEAddress;
+
+public class GenericBLEDevice
+{
+    private static final String TAG = "GenericBLEDevice";
+
+    private GenericBLEDeviceImpl impl;
+    public deviceStateListener mStateListener = null;
+
+    private GenericBLEDevice(GenericBLEDeviceImpl impl)
+    {
+        this.impl = impl;
+        this.impl.parent = this;
+        Log.i(TAG, String.format("CREATED %s", impl.getAddress().macString()));
+    }
+
+    public GenericBLEDeviceImpl getImpl()
+    {
+        return impl;
+    }
+
+    public static GenericBLEDevice create(GenericBLEDeviceImpl impl)
+    {
+        return new GenericBLEDevice(impl);
+    }
+
+    public void connect(deviceStateListener stateListener)
+    {
+        this.mStateListener = stateListener;
+        this.impl.connect();
+    }
+
+    public void disconnect()
+    {
+        this.impl.disconnect();
+    }
+
+    public void close()
+    {
+        this.impl.close();
+    }
+
+    public boolean writeChar(UUID serviceUUID, UUID charUUID, byte[] data) { return this.impl.writeChar(serviceUUID, charUUID, data); }
+    public boolean readChar(UUID serviceUUID, UUID charUUID) { return this.impl.readChar(serviceUUID, charUUID); }
+    public boolean discoverServices() { return this.impl.discoverServices(); }
+    public boolean subscribeChar(UUID uuid)
+    {
+        return this.impl.subscribeChar(uuid);
+    }
+
+    public interface deviceStateListener
+    {
+        void onDeviceConnected(GenericBLEDevice device);
+        void onDeviceDisconnected(GenericBLEDevice device);
+        void onDeviceNotification(GenericBLEDevice device, UUID char_uuid, byte[] data);
+        void onDeviceServicesDiscovered(GenericBLEDevice device, boolean status);
+        void onDeviceCharacteristicWrite(GenericBLEDevice device, UUID char_uuid, boolean status);
+        void onDeviceCharacteristicRead(GenericBLEDevice device, UUID char_uuid, byte[] data, boolean status);
+        void onDeviceCharacteristicSubscribed(GenericBLEDevice device, UUID char_uuid, boolean status);
+    }
+
+    public void triggerNotificationListeners(UUID char_uuid, byte[] data)
+    {
+
+    }
+
+
+    public String getName() { return this.impl.getName(); }
+    public String getNormalizedName() { return this.impl.getNormalizedName(); }
+    public BLEAddress getAddress() { return this.impl.getAddress(); }
+}
