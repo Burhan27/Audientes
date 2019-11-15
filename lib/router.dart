@@ -1,6 +1,6 @@
 import 'package:audientes/mixer.dart';
 import 'package:flutter/material.dart';
-import 'startscreen.dart';
+import 'package:audientes/view/startscreen.dart';
 import 'settings.dart';
 import 'mixer.dart';
 

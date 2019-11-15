@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'startscreen.dart';
+import 'package:audientes/view/startscreen.dart';
 import 'settings.dart';
 import 'hearingTest.dart';
 import 'package:flutter_crashlytics/flutter_crashlytics.dart';
