@@ -24,6 +24,7 @@ if (flutterVersionName == null) {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'io.fabric'
+apply plugin: 'realm-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 
@@ -62,6 +63,9 @@ flutter {
 }
 
 dependencies {
+    implementation 'io.sentry:sentry-android:1.5.3'
+    implementation 'no.nordicsemi.android.support.v18:scanner:1.0.0'
+    implementation 'com.jakewharton.timber:timber:4.6.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.firebase:firebase-analytics:17.2.0'
     testImplementation 'junit:junit:4.12'
