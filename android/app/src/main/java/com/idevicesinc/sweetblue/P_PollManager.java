@@ -1,9 +1,5 @@
 package com.idevicesinc.sweetblue;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.UUID;
-
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 
@@ -16,6 +12,10 @@ import com.idevicesinc.sweetblue.BleDeviceConfig.BondFilter.CharacteristicEventT
 import com.idevicesinc.sweetblue.utils.Interval;
 import com.idevicesinc.sweetblue.utils.P_Const;
 import com.idevicesinc.sweetblue.utils.Uuids;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.UUID;
 
 final class P_PollManager
 {

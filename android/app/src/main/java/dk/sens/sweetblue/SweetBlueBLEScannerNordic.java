@@ -1,4 +1,4 @@
-package dk.sens.android.ble.sweetblue;
+package dk.sens.sweetblue;
 
 /*
  * Copyright (c) 2016 SENS Innovation ApS <morten@sens.dk>

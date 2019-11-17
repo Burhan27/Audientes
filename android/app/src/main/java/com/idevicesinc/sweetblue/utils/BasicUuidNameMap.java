@@ -1,10 +1,10 @@
 package com.idevicesinc.sweetblue.utils;
 
-import java.util.HashMap;
-import java.util.UUID;
-
 import com.idevicesinc.sweetblue.BleManagerConfig;
 import com.idevicesinc.sweetblue.annotations.Extendable;
+
+import java.util.HashMap;
+import java.util.UUID;
 
 /**
  * Manual convenience implementation of {@link UuidNameMap} that's basically just a {@link HashMap}.

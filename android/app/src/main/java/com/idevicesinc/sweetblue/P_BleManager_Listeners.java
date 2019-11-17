@@ -1,17 +1,5 @@
 package com.idevicesinc.sweetblue;
 
-import static com.idevicesinc.sweetblue.BleManagerState.BLE_SCAN_READY;
-import static com.idevicesinc.sweetblue.BleManagerState.BOOST_SCANNING;
-import static com.idevicesinc.sweetblue.BleManagerState.OFF;
-import static com.idevicesinc.sweetblue.BleManagerState.ON;
-import static com.idevicesinc.sweetblue.BleManagerState.SCANNING;
-import static com.idevicesinc.sweetblue.BleManagerState.SCANNING_PAUSED;
-import static com.idevicesinc.sweetblue.BleManagerState.STARTING_SCAN;
-import static com.idevicesinc.sweetblue.BleManagerState.TURNING_OFF;
-import static com.idevicesinc.sweetblue.BleManagerState.TURNING_ON;
-
-import com.idevicesinc.sweetblue.PA_StateTracker.E_Intent;
-
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
@@ -21,12 +9,23 @@ import android.content.IntentFilter;
 import android.util.Log;
 
 import com.idevicesinc.sweetblue.BleManager.UhOhListener.UhOh;
+import com.idevicesinc.sweetblue.PA_StateTracker.E_Intent;
 import com.idevicesinc.sweetblue.utils.Interval;
 import com.idevicesinc.sweetblue.utils.State;
 import com.idevicesinc.sweetblue.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.idevicesinc.sweetblue.BleManagerState.BLE_SCAN_READY;
+import static com.idevicesinc.sweetblue.BleManagerState.BOOST_SCANNING;
+import static com.idevicesinc.sweetblue.BleManagerState.OFF;
+import static com.idevicesinc.sweetblue.BleManagerState.ON;
+import static com.idevicesinc.sweetblue.BleManagerState.SCANNING;
+import static com.idevicesinc.sweetblue.BleManagerState.SCANNING_PAUSED;
+import static com.idevicesinc.sweetblue.BleManagerState.STARTING_SCAN;
+import static com.idevicesinc.sweetblue.BleManagerState.TURNING_OFF;
+import static com.idevicesinc.sweetblue.BleManagerState.TURNING_ON;
 
 
 final class P_BleManager_Listeners

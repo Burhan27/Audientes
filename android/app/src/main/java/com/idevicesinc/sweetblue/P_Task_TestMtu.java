@@ -3,8 +3,10 @@ package com.idevicesinc.sweetblue;
 
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
+
 import com.idevicesinc.sweetblue.utils.FutureData;
 import com.idevicesinc.sweetblue.utils.Utils;
+
 import java.util.UUID;
 
 

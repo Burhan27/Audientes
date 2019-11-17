@@ -5,7 +5,9 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattServer;
 import android.bluetooth.BluetoothGattService;
+
 import com.idevicesinc.sweetblue.utils.P_Const;
+
 import java.util.List;
 import java.util.UUID;
 

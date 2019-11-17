@@ -1,6 +1,6 @@
 package com.idevicesinc.sweetblue.utils;
 
-import com.idevicesinc.sweetblue.annotations.*;
+import com.idevicesinc.sweetblue.annotations.Immutable;
 
 /**
  * Interface implemented by some enums and mostly other {@link Immutable} structs

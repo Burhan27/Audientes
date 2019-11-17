@@ -1,6 +1,7 @@
 package com.idevicesinc.sweetblue;
 
 import android.bluetooth.BluetoothGatt;
+
 import com.idevicesinc.sweetblue.BleDevice.ReadWriteListener.ReadWriteEvent;
 import com.idevicesinc.sweetblue.BleDevice.ReadWriteListener.Status;
 import com.idevicesinc.sweetblue.utils.Utils;

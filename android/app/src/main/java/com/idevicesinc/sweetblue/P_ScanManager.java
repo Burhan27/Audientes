@@ -3,18 +3,21 @@ package com.idevicesinc.sweetblue;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+
 import com.idevicesinc.sweetblue.compat.L_Util;
 import com.idevicesinc.sweetblue.utils.Interval;
 import com.idevicesinc.sweetblue.utils.Utils;
 import com.idevicesinc.sweetblue.utils.Utils_String;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
-import static com.idevicesinc.sweetblue.BleManagerState.SCANNING;
+
 import static com.idevicesinc.sweetblue.BleManagerState.BOOST_SCANNING;
+import static com.idevicesinc.sweetblue.BleManagerState.SCANNING;
 import static com.idevicesinc.sweetblue.BleManagerState.SCANNING_PAUSED;
 import static com.idevicesinc.sweetblue.BleManagerState.STARTING_SCAN;
 

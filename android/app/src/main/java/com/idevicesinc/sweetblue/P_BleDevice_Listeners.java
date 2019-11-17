@@ -1,7 +1,5 @@
 package com.idevicesinc.sweetblue;
 
-import java.util.UUID;
-
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
@@ -16,6 +14,8 @@ import com.idevicesinc.sweetblue.P_Task_Bond.E_TransactionLockBehavior;
 import com.idevicesinc.sweetblue.utils.Interval;
 import com.idevicesinc.sweetblue.utils.P_Const;
 import com.idevicesinc.sweetblue.utils.Utils;
+
+import java.util.UUID;
 
 
 final class P_BleDevice_Listeners extends BluetoothGattCallback

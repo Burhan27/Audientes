@@ -1,6 +1,6 @@
 package com.idevicesinc.sweetblue.utils;
 
-import com.idevicesinc.sweetblue.annotations.*;
+import com.idevicesinc.sweetblue.annotations.Immutable;
 
 /**
  * Wrapper for a percentage value, generally from 0-100%;

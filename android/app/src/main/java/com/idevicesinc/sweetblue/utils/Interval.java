@@ -1,7 +1,11 @@
 package com.idevicesinc.sweetblue.utils;
 
-import com.idevicesinc.sweetblue.*;
-import com.idevicesinc.sweetblue.annotations.*;
+import com.idevicesinc.sweetblue.BleDevice;
+import com.idevicesinc.sweetblue.BleDeviceConfig;
+import com.idevicesinc.sweetblue.BleManager;
+import com.idevicesinc.sweetblue.BleManagerConfig;
+import com.idevicesinc.sweetblue.annotations.Immutable;
+import com.idevicesinc.sweetblue.annotations.Nullable;
 import com.idevicesinc.sweetblue.annotations.Nullable.Prevalence;
 
 /**

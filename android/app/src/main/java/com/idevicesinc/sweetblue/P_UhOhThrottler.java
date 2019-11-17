@@ -3,11 +3,11 @@ package com.idevicesinc.sweetblue;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.util.HashMap;
-
 import com.idevicesinc.sweetblue.BleManager.UhOhListener;
-import com.idevicesinc.sweetblue.BleManager.UhOhListener.UhOhEvent;
 import com.idevicesinc.sweetblue.BleManager.UhOhListener.UhOh;
+import com.idevicesinc.sweetblue.BleManager.UhOhListener.UhOhEvent;
+
+import java.util.HashMap;
 
 
 /**

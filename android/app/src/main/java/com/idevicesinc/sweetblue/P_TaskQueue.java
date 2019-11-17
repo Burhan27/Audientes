@@ -1,12 +1,13 @@
 package com.idevicesinc.sweetblue;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 import android.os.Handler;
 import android.os.Looper;
 
 import com.idevicesinc.sweetblue.utils.Interval;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 final class P_TaskQueue

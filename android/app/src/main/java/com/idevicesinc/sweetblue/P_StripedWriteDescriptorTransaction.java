@@ -2,8 +2,10 @@ package com.idevicesinc.sweetblue;
 
 
 import android.bluetooth.BluetoothGattDescriptor;
+
 import com.idevicesinc.sweetblue.utils.FutureData;
 import com.idevicesinc.sweetblue.utils.PresentData;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

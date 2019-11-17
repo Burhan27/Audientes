@@ -1,8 +1,8 @@
 package com.idevicesinc.sweetblue.utils;
 
-import java.util.UUID;
-
 import com.idevicesinc.sweetblue.BleManagerConfig;
+
+import java.util.UUID;
 
 /**
  * Provide an implementation to {@link BleManagerConfig#uuidNameMaps}.

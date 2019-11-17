@@ -1,10 +1,10 @@
 package com.idevicesinc.sweetblue.utils;
 
-import java.lang.reflect.Field;
-import java.util.HashMap;
-
 import com.idevicesinc.sweetblue.BleManagerConfig;
 import com.idevicesinc.sweetblue.annotations.Extendable;
+
+import java.lang.reflect.Field;
+import java.util.HashMap;
 
 /**
  * Convenience implementation of {@link UuidNameMap} that takes a {@link Class} object

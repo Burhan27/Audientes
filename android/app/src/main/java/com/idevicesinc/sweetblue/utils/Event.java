@@ -1,6 +1,7 @@
 package com.idevicesinc.sweetblue.utils;
 
 import com.idevicesinc.sweetblue.annotations.Extendable;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

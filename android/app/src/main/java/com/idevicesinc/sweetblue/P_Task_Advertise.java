@@ -2,11 +2,12 @@ package com.idevicesinc.sweetblue;
 
 import android.annotation.TargetApi;
 import android.os.Build;
+
+import com.idevicesinc.sweetblue.BleAdvertisingSettings.BleAdvertisingMode;
+import com.idevicesinc.sweetblue.BleAdvertisingSettings.BleTransmissionPower;
 import com.idevicesinc.sweetblue.compat.L_Util;
 import com.idevicesinc.sweetblue.utils.Interval;
 import com.idevicesinc.sweetblue.utils.Utils;
-import com.idevicesinc.sweetblue.BleAdvertisingSettings.BleAdvertisingMode;
-import com.idevicesinc.sweetblue.BleAdvertisingSettings.BleTransmissionPower;
 
 
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)

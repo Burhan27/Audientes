@@ -1,10 +1,10 @@
 package com.idevicesinc.sweetblue.annotations;
 
+import com.idevicesinc.sweetblue.BleDeviceState;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
-import com.idevicesinc.sweetblue.BleDeviceState;
 
 /**
  * This annotation is used to tag methods and parameters to give extra information

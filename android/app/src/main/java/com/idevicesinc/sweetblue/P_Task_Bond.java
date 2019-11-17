@@ -1,6 +1,7 @@
 package com.idevicesinc.sweetblue;
 
 import android.annotation.SuppressLint;
+
 import com.idevicesinc.sweetblue.utils.Utils;
 
 

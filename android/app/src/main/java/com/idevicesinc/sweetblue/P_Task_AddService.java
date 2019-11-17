@@ -1,6 +1,7 @@
 package com.idevicesinc.sweetblue;
 
 import android.bluetooth.BluetoothGattService;
+
 import com.idevicesinc.sweetblue.utils.Utils;
 
 

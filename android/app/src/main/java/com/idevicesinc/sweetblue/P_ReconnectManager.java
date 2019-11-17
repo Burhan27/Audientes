@@ -1,11 +1,11 @@
 package com.idevicesinc.sweetblue;
 
-import static com.idevicesinc.sweetblue.BleDeviceState.RECONNECTING_LONG_TERM;
-
 import com.idevicesinc.sweetblue.BleDevice.ConnectionFailListener;
+import com.idevicesinc.sweetblue.BleNodeConfig.ReconnectFilter;
 import com.idevicesinc.sweetblue.PA_StateTracker.E_Intent;
 import com.idevicesinc.sweetblue.utils.Interval;
-import com.idevicesinc.sweetblue.BleNodeConfig.*;
+
+import static com.idevicesinc.sweetblue.BleDeviceState.RECONNECTING_LONG_TERM;
 
 final class P_ReconnectManager
 {

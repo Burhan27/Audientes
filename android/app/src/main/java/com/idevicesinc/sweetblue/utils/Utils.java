@@ -1,19 +1,20 @@
 package com.idevicesinc.sweetblue.utils;
 
-import java.lang.reflect.Method;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
-
 import android.Manifest;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.*;
+import android.os.Build;
+import android.os.Looper;
 import android.provider.Settings;
 import android.text.TextUtils;
+
+import java.lang.reflect.Method;
+import java.util.Collection;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Some static utility methods that are probably not very useful outside the library.

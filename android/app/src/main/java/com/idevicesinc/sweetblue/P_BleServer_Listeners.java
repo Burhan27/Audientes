@@ -1,7 +1,5 @@
 package com.idevicesinc.sweetblue;
 
-import java.util.UUID;
-
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
@@ -10,12 +8,17 @@ import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothProfile;
 
 import com.idevicesinc.sweetblue.BleServer.IncomingListener;
-import static com.idevicesinc.sweetblue.BleServer.IncomingListener.*;
-import static com.idevicesinc.sweetblue.BleServer.OutgoingListener.*;
-
 import com.idevicesinc.sweetblue.utils.P_Const;
 import com.idevicesinc.sweetblue.utils.Utils;
 import com.idevicesinc.sweetblue.utils.Uuids;
+
+import java.util.UUID;
+
+import static com.idevicesinc.sweetblue.BleServer.IncomingListener.IncomingEvent;
+import static com.idevicesinc.sweetblue.BleServer.IncomingListener.Target;
+import static com.idevicesinc.sweetblue.BleServer.IncomingListener.Type;
+import static com.idevicesinc.sweetblue.BleServer.OutgoingListener.OutgoingEvent;
+import static com.idevicesinc.sweetblue.BleServer.OutgoingListener.Status;
 
 class P_BleServer_Listeners extends BluetoothGattServerCallback
 {

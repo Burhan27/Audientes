@@ -2,9 +2,11 @@ package com.idevicesinc.sweetblue;
 
 
 import android.bluetooth.BluetoothGattService;
+
 import com.idevicesinc.sweetblue.utils.ForEach_Breakable;
 import com.idevicesinc.sweetblue.utils.P_Const;
 import com.idevicesinc.sweetblue.utils.Pointer;
+
 import java.util.List;
 import java.util.UUID;
 

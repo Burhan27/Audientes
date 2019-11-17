@@ -1,7 +1,5 @@
 package com.idevicesinc.sweetblue;
 
-import java.util.UUID;
-
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCharacteristic;
 
@@ -9,9 +7,11 @@ import com.idevicesinc.sweetblue.BleDevice.ReadWriteListener.ReadWriteEvent;
 import com.idevicesinc.sweetblue.BleDevice.ReadWriteListener.Status;
 import com.idevicesinc.sweetblue.BleDevice.ReadWriteListener.Target;
 import com.idevicesinc.sweetblue.BleDevice.ReadWriteListener.Type;
+import com.idevicesinc.sweetblue.BleManager.UhOhListener.UhOh;
 import com.idevicesinc.sweetblue.utils.FutureData;
 import com.idevicesinc.sweetblue.utils.Utils;
-import com.idevicesinc.sweetblue.BleManager.UhOhListener.UhOh;
+
+import java.util.UUID;
 
 final class P_Task_Write extends PA_Task_ReadOrWrite
 {

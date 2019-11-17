@@ -2,7 +2,9 @@ package com.idevicesinc.sweetblue;
 
 
 import com.idevicesinc.sweetblue.utils.Utils;
+
 import java.util.UUID;
+
 import static com.idevicesinc.sweetblue.BleManagerState.ON;
 
 

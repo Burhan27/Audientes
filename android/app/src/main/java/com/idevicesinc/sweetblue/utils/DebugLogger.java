@@ -1,8 +1,10 @@
 package com.idevicesinc.sweetblue.utils;
 
 import android.util.Log;
-import com.idevicesinc.sweetblue.SweetLogger;
+
 import com.idevicesinc.sweetblue.BleManagerConfig;
+import com.idevicesinc.sweetblue.SweetLogger;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;

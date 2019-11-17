@@ -1,16 +1,17 @@
 package com.idevicesinc.sweetblue;
 
-import java.util.List;
-import java.util.UUID;
-
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattService;
+
 import com.idevicesinc.sweetblue.BleDevice.ReadWriteListener.ReadWriteEvent;
 import com.idevicesinc.sweetblue.BleDevice.ReadWriteListener.Status;
 import com.idevicesinc.sweetblue.BleDevice.ReadWriteListener.Target;
 import com.idevicesinc.sweetblue.BleDevice.ReadWriteListener.Type;
 import com.idevicesinc.sweetblue.utils.FutureData;
 import com.idevicesinc.sweetblue.utils.P_Const;
+
+import java.util.List;
+import java.util.UUID;
 
 
 final class P_DeviceServiceManager extends PA_ServiceManager

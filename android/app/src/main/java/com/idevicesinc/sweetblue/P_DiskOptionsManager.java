@@ -1,15 +1,17 @@
 package com.idevicesinc.sweetblue;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.idevicesinc.sweetblue.utils.EmptyIterator;
+import com.idevicesinc.sweetblue.utils.State;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.idevicesinc.sweetblue.utils.EmptyIterator;
-import com.idevicesinc.sweetblue.utils.State;
 
 
 final class P_DiskOptionsManager

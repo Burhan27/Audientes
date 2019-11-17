@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.os.Build;
+
 import com.idevicesinc.sweetblue.BleDevice;
 
 

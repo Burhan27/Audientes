@@ -1,7 +1,7 @@
 package com.idevicesinc.sweetblue.utils;
 
 
-import com.idevicesinc.sweetblue.annotations.*;
+import com.idevicesinc.sweetblue.annotations.Immutable;
 
 /**
  * Wrapper for a positive-only physical distance supporting various units of measurement.

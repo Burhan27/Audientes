@@ -4,6 +4,7 @@ package com.idevicesinc.sweetblue.utils;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

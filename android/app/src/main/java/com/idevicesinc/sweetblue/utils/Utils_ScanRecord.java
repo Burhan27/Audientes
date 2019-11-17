@@ -16,6 +16,15 @@
 
 package com.idevicesinc.sweetblue.utils;
 
+import android.bluetooth.le.ScanRecord;
+import android.os.ParcelUuid;
+import android.text.TextUtils;
+import android.util.Log;
+import android.util.SparseArray;
+
+import com.idevicesinc.sweetblue.BleNodeConfig;
+import com.idevicesinc.sweetblue.annotations.Nullable;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -24,15 +33,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
-import android.bluetooth.le.*;
-import android.os.ParcelUuid;
-import android.text.TextUtils;
-import android.util.Log;
-import android.util.SparseArray;
-
-import com.idevicesinc.sweetblue.BleNodeConfig;
-import com.idevicesinc.sweetblue.annotations.Nullable;
 
 /**
  * Some utilities for dealing with raw byte array scan records.

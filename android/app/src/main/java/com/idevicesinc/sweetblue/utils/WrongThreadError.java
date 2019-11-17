@@ -1,6 +1,9 @@
 package com.idevicesinc.sweetblue.utils;
 
-import com.idevicesinc.sweetblue.*;
+import com.idevicesinc.sweetblue.BleDevice;
+import com.idevicesinc.sweetblue.BleManager;
+import com.idevicesinc.sweetblue.BleManagerConfig;
+import com.idevicesinc.sweetblue.BleServer;
 
 /**
  * Most of the methods of core SweetBlue classes like {@link BleDevice}, {@link BleManager}, and {@link BleServer}

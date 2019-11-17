@@ -1,11 +1,11 @@
 package com.idevicesinc.sweetblue.utils;
 
+import android.util.Log;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.UUID;
-
-import android.util.Log;
 
 /**
  * Some utilities for dealing with raw byte array scan records.

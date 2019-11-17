@@ -11,13 +11,16 @@ import android.bluetooth.le.AdvertiseSettings;
 import android.content.Context;
 import android.os.Build;
 import android.os.DeadObjectException;
+
 import com.idevicesinc.sweetblue.compat.L_Util;
 import com.idevicesinc.sweetblue.compat.M_Util;
 import com.idevicesinc.sweetblue.utils.Interval;
 import com.idevicesinc.sweetblue.utils.Utils;
+
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
+
 import static com.idevicesinc.sweetblue.BleManagerState.OFF;
 import static com.idevicesinc.sweetblue.BleManagerState.ON;
 

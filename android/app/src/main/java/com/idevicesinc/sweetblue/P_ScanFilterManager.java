@@ -1,9 +1,10 @@
 package com.idevicesinc.sweetblue;
 
-import java.util.ArrayList;
 import com.idevicesinc.sweetblue.BleManagerConfig.ScanFilter;
 import com.idevicesinc.sweetblue.BleManagerConfig.ScanFilter.Please;
 import com.idevicesinc.sweetblue.BleManagerConfig.ScanFilter.ScanEvent;
+
+import java.util.ArrayList;
 
 
 final class P_ScanFilterManager

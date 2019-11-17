@@ -1,7 +1,5 @@
 package com.idevicesinc.sweetblue;
 
-import static com.idevicesinc.sweetblue.BleNodeConfig.HistoricalDataLogFilter.*;
-
 import com.idevicesinc.sweetblue.backend.historical.Backend_HistoricalDataList;
 import com.idevicesinc.sweetblue.backend.historical.Backend_HistoricalDatabase;
 import com.idevicesinc.sweetblue.utils.EmptyIterator;
@@ -16,6 +14,9 @@ import com.idevicesinc.sweetblue.utils.UpdateLoop;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.UUID;
+
+import static com.idevicesinc.sweetblue.BleNodeConfig.HistoricalDataLogFilter.Please;
+import static com.idevicesinc.sweetblue.BleNodeConfig.HistoricalDataLogFilter.Source;
 
 final class P_HistoricalDataManager
 {

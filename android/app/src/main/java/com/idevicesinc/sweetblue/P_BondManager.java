@@ -2,19 +2,21 @@ package com.idevicesinc.sweetblue;
 
 import android.bluetooth.BluetoothDevice;
 
-import static com.idevicesinc.sweetblue.BleDeviceState.BONDED;
-import static com.idevicesinc.sweetblue.BleDeviceState.BONDING;
-import static com.idevicesinc.sweetblue.BleDeviceState.UNBONDED;
-import com.idevicesinc.sweetblue.BleDevice.BondListener.BondEvent;
 import com.idevicesinc.sweetblue.BleDevice.BondListener;
-import com.idevicesinc.sweetblue.BleDevice.ConnectionFailListener;
+import com.idevicesinc.sweetblue.BleDevice.BondListener.BondEvent;
 import com.idevicesinc.sweetblue.BleDevice.BondListener.Status;
+import com.idevicesinc.sweetblue.BleDevice.ConnectionFailListener;
 import com.idevicesinc.sweetblue.BleDeviceConfig.BondFilter;
 import com.idevicesinc.sweetblue.BleManager.UhOhListener.UhOh;
 import com.idevicesinc.sweetblue.PA_StateTracker.E_Intent;
 import com.idevicesinc.sweetblue.utils.State;
 import com.idevicesinc.sweetblue.utils.Utils;
+
 import java.util.UUID;
+
+import static com.idevicesinc.sweetblue.BleDeviceState.BONDED;
+import static com.idevicesinc.sweetblue.BleDeviceState.BONDING;
+import static com.idevicesinc.sweetblue.BleDeviceState.UNBONDED;
 
 
 final class P_BondManager

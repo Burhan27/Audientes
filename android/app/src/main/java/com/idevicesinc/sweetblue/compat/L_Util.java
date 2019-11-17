@@ -13,10 +13,12 @@ import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanSettings;
 import android.os.Build;
 import android.util.Log;
+
 import com.idevicesinc.sweetblue.BleAdvertisingSettings;
 import com.idevicesinc.sweetblue.BleDevice;
 import com.idevicesinc.sweetblue.BleManager;
 import com.idevicesinc.sweetblue.utils.Interval;
+
 import java.util.ArrayList;
 import java.util.List;
 
