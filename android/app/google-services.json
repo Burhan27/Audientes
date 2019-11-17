@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:89696123358:android:78f0292d8d47b1686b454f",
         "android_client_info": {
-          "package_name": "com.example.audientes"
+          "package_name": "dk.alen.audientes"
         }
       },
       "oauth_client": [
