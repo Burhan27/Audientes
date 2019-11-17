@@ -1,4 +1,4 @@
-import 'package:audientes/settingOption.dart';
+import 'package:audientes/view/widgets/settingOption.dart';
 import 'package:audientes/view/widgets/mixer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';

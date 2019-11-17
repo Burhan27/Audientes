@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audientes/view/startscreen.dart';
-import 'settings.dart';
-import 'hearingTest.dart';
+import 'package:audientes/view/settings.dart';
+import 'package:audientes/view/hearingTest.dart';
 import 'package:flutter_crashlytics/flutter_crashlytics.dart';
 import 'dart:async';
 
