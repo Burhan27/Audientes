@@ -24,7 +24,7 @@ package dk.sens.android.ble.tasks;
  */
 
 import java.util.UUID;
-import android.bluetooth.BluetoothGatt;
+
 import android.support.annotation.CallSuper;
 import android.util.Log;
 

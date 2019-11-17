@@ -1,7 +1,5 @@
 package dk.sens.android.ble.tasks;
 
-import android.bluetooth.BluetoothGatt;
-
 import dk.sens.android.ble.ExtendedBLEPeripheral;
 import dk.sens.android.ble.generic.GenericBLEDevice;
 

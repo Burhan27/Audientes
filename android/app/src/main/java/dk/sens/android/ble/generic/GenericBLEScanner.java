@@ -24,7 +24,6 @@ package dk.sens.android.ble.generic;
  */
 
 import java.util.UUID;
-import android.content.Context;
 
 import dk.sens.android.ble.BLEAddress;
 import dk.sens.android.ble.sim.SimBLEScanner;

@@ -23,9 +23,6 @@ package dk.sens.android.ble.sim;
  *
  */
 
-import android.content.Context;
-import android.os.Handler;
-
 import dk.sens.android.ble.BLEAddress;
 import dk.sens.android.ble.generic.GenericBLEDevice;
 import dk.sens.android.ble.generic.GenericBLEScanRecord;
