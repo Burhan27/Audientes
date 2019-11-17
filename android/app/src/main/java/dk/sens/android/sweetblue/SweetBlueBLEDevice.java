@@ -26,10 +26,10 @@ package dk.sens.android.sweetblue;
 
 import android.util.Log;
 
-import com.idevicesinc.sweetblue.BleDevice;
-import com.idevicesinc.sweetblue.BleDeviceConfig;
-import com.idevicesinc.sweetblue.BleDeviceState;
-import com.idevicesinc.sweetblue.BleNodeConfig;
+import com.sweetblue.BleDevice;
+import com.sweetblue.BleDeviceConfig;
+import com.sweetblue.BleDeviceState;
+import com.sweetblue.BleNodeConfig;
 
 import java.util.UUID;
 

@@ -1,6 +1,6 @@
 package dk.sens.android.util.logging;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.Log;
 
 import java.text.SimpleDateFormat;

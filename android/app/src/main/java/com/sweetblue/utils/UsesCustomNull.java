@@ -1,6 +1,6 @@
 package com.sweetblue.utils;
 
-import com.idevicesinc.sweetblue.annotations.*;
+import com.sweetblue.annotations.*;
 import com.sweetblue.annotations.Immutable;
 
 /**

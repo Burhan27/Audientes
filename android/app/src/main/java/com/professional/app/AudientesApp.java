@@ -57,6 +57,12 @@ public class AudientesApp extends Application implements GenericBLEScanner.disco
         }
     }
 
+    public void onDeviceVersionReceived(byte datum, byte datum1, byte datum2) {
+    }
+
+    public void onTestResult(TestResult mActiveTest) {
+    }
+
     /*
      * Parameters
      */

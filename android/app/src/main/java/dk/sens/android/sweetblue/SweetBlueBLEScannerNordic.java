@@ -26,7 +26,7 @@ package dk.sens.android.sweetblue;
 
 import android.content.Context;
 
-import com.idevicesinc.sweetblue.BleManager;
+import com.sweetblue.BleManager;
 
 import dk.sens.android.ble.BLEAddress;
 import dk.sens.android.ble.generic.GenericBLEDevice;

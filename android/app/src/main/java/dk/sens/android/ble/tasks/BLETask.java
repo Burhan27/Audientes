@@ -25,8 +25,10 @@ package dk.sens.android.ble.tasks;
 
 import java.util.UUID;
 
-import android.support.annotation.CallSuper;
+
 import android.util.Log;
+
+import androidx.annotation.CallSuper;
 
 import dk.sens.android.ble.ExtendedBLEPeripheral;
 import dk.sens.android.ble.generic.GenericBLEDevice;

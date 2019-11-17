@@ -2,7 +2,9 @@ package com.professional.device.rpc;
 
 import java.util.UUID;
 
-import static dk.sens.android.ble.UUIDs.fromShort;
+import dk.sens.android.ble.UUIDs.*
+
+;
 
 /**
  * Created by morten on 28/05/2017.

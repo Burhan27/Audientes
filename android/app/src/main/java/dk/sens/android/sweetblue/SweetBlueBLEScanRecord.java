@@ -23,7 +23,7 @@ package dk.sens.android.sweetblue;
  *
  */
 
-import com.idevicesinc.sweetblue.utils.BleScanInfo;
+import com.sweetblue.utils.BleScanInfo;
 
 import dk.sens.android.ble.generic.GenericBLEScanRecord;
 import dk.sens.android.ble.generic.GenericBLEScanRecordImpl;

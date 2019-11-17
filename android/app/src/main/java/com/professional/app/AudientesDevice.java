@@ -5,6 +5,7 @@ import android.util.Log;
 import com.professional.device.rpc.RPCCallTask;
 import com.professional.device.rpc.RPCCodes;
 import com.professional.device.rpc.UUIDs;
+import com.professional.util.ByteUtils;
 
 import java.util.HashMap;
 import java.util.LinkedList;
