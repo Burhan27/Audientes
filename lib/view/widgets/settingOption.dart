@@ -1,4 +1,4 @@
-import 'package:audientes/settingsOptionDropDown.dart';
+import 'package:audientes/view/widgets/settingsOptionDropDown.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

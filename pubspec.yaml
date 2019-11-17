@@ -30,6 +30,8 @@ dependencies:
 
   flutter_crashlytics: ^1.0.0
 
+  cloud_firestore:
+
 #https://pub.dev/packages/font_awesome_flutter Made by Brian Egan Found 24/10/2019
   font_awesome_flutter: ^8.5.0
 

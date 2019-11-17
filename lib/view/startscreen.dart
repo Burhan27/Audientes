@@ -2,9 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:volume/volume.dart';
 import 'dart:async';
+import 'package:audientes/model/programItem.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:system_shortcuts/system_shortcuts.dart';
 import 'package:flutter/services.dart';
+import 'package:audientes/view/widgets/programItemView.dart';
+import 'package:audientes/controller/ProgramController.dart';
+
 
 
 class MyApp extends StatefulWidget {
@@ -14,14 +18,20 @@ class MyApp extends StatefulWidget {
 
 class StartScreen extends State<MyApp> {
   int maxVol = 0, currentVol = 0;
+  List<ProgramItem> programItems = new List<ProgramItem>();
+  ProgramController programController = new ProgramController();
 
-  static const MethodChannel _channel = const MethodChannel('system_shortcuts');
 
   @override
   void initState() {
     super.initState();
     initPlatformState();
     updateVolumes();
+    programItems.add(new ProgramItem("test1", Icons.home, Colors.white, false, false, 0));
+    programItems.add(new ProgramItem("test2", Icons.home, Colors.white, false, false, 6));
+    programItems.add(new ProgramItem("test3", Icons.terrain, Colors.white, false, false, 0));
+    programItems.add(new ProgramItem("test3", Icons.home, Colors.white, false, false, 0));
+  //  programController.createProgram(programItems.elementAt(1));
   }
 
   Future<void> initPlatformState() async {
@@ -30,9 +40,7 @@ class StartScreen extends State<MyApp> {
 
   updateVolumes() async {
     // get Max Volume
-    print(Text("hej" + maxVol.toString()));
     maxVol = await Volume.getMaxVol;
- //   maxVol = 15;
     // get Current Volume
     currentVol = await Volume.getVol;
  //   currentVol = 4;
@@ -55,41 +63,8 @@ class StartScreen extends State<MyApp> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Test(),
-            threeButtons(),
-            Container(
-              decoration: new BoxDecoration(
-                borderRadius: new BorderRadius.circular(16.0),
-                color: Color(0xff303030),
-
-              ),
-              width: MediaQuery
-                .of(context)
-                .size
-                .width * 0.8,
-              height: MediaQuery
-                .of(context)
-                .size
-                .width * 0.3,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                frontScreenIcon(Colors.blue, Colors.white, MediaQuery
-                    .of(context)
-                    .size
-                    .width * 0.07, Icons.radio, 1, 'Music'),
-
-                frontScreenIcon(Colors.blue, Colors.white, MediaQuery
-                    .of(context)
-                    .size
-                    .width * 0.07, Icons.home, 1, 'Home'),
-
-                frontScreenIcon(Colors.blue, Colors.white, MediaQuery
-                    .of(context)
-                    .size
-                    .width * 0.07, Icons.work, 1, 'Work'),
-              ],
-            ),
-            ),
+             threeButtons(),
+            ProgramItemView(programItems),
           ],
         ),
         color: Color(0xff131313),
@@ -199,9 +174,8 @@ class StartScreen extends State<MyApp> {
           ),
           Expanded(
             child: RawMaterialButton(
-              onPressed: () async {
-                await SystemShortcuts.volUp();
-                 updateVolumes();
+              onPressed: ()  {
+                programItems.add(new ProgramItem("test3", Icons.access_time, Colors.white, false, false, 0));
               },
               child: new Icon(
                 FontAwesomeIcons.volumeUp,
@@ -224,8 +198,8 @@ class StartScreen extends State<MyApp> {
 
       RawMaterialButton(
         onPressed: (
-            ) {
-          },
+        ) {
+        },
         child: new Icon(
           icon,
           color: iconColor,

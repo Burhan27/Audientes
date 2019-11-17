@@ -15,8 +15,6 @@ class mixer extends StatefulWidget {
 
 }
 
-
-
 class mixerState extends State<mixer> {
   String text;
   double frequency;
@@ -45,7 +43,6 @@ class mixerState extends State<mixer> {
             onChanged: (double q) {
               frequency = q;
               setState(() {
-
               });
             },
           ),

@@ -1,8 +1,7 @@
-import 'package:audientes/mixer.dart';
+import 'package:audientes/view/widgets/mixer.dart';
 import 'package:flutter/material.dart';
-import 'startscreen.dart';
-import 'settings.dart';
-import 'mixer.dart';
+import 'package:audientes/view/startscreen.dart';
+import 'package:audientes/settings.dart.';
 
 
 class Router{
