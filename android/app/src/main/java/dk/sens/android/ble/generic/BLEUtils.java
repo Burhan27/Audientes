@@ -23,13 +23,14 @@ package dk.sens.android.ble.generic;
  *
  */
 
-import java.util.List;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.util.Log;
+
+import java.util.List;
 
 
 public class BLEUtils

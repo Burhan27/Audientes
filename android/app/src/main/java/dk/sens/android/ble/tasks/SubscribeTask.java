@@ -23,9 +23,9 @@ package dk.sens.android.ble.tasks;
  *
  */
 
-import java.util.UUID;
-
 import android.util.Log;
+
+import java.util.UUID;
 
 import dk.sens.android.ble.ExtendedBLEPeripheral;
 import dk.sens.android.ble.generic.GenericBLEDevice;

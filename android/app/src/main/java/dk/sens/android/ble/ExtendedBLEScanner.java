@@ -23,11 +23,11 @@ package dk.sens.android.ble;
  *
  */
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
-
-import android.util.Log;
 
 import dk.sens.android.ble.generic.GenericBLEDevice;
 import dk.sens.android.ble.generic.GenericBLEScanRecord;

@@ -57,7 +57,7 @@ class Settings extends StatelessWidget {
               ),
               settingOption(Colors.cyan, Icons.home, 'Home', false),
               settingOption(Colors.amberAccent, Icons.work, 'Work', false),
-            ],
+            BluetoothButton()],
           ),
         ),
         width: double.infinity,

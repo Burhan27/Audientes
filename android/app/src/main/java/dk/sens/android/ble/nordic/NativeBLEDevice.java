@@ -186,7 +186,7 @@ public class NativeBLEDevice extends GenericBLEDeviceImpl
     {
 
         @Override // BluetoothGattCallback
-        public void onConnectionStateChange (BluetoothGatt gatt,int status, int newState)
+        public void onConnectionStateChange (BluetoothGatt gatt, int status, int newState)
         {
             String stateText = "Other";
             if (newState == BluetoothGatt.STATE_CONNECTED)
@@ -266,7 +266,7 @@ public class NativeBLEDevice extends GenericBLEDeviceImpl
         }
 
         @Override
-        public void onServicesDiscovered (BluetoothGatt gatt,int status)
+        public void onServicesDiscovered (BluetoothGatt gatt, int status)
         {
             Log.i(TAG(), "Discover Services Done " + status);
 

@@ -23,12 +23,12 @@ package dk.sens.android.ble.tasks;
  *
  */
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 import dk.sens.android.ble.ExtendedBLEPeripheral;
 

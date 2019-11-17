@@ -23,8 +23,9 @@ package dk.sens.android.ble.generic;
  *
  */
 
-import java.util.UUID;
 import android.util.Log;
+
+import java.util.UUID;
 
 import dk.sens.android.ble.BLEAddress;
 

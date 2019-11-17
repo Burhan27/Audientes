@@ -27,21 +27,20 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import java.util.UUID;
+
 import dk.sens.android.ble.generic.GenericBLEDevice;
 import dk.sens.android.ble.generic.GenericBLEScanRecord;
 import dk.sens.android.ble.generic.GenericBLEScanner;
 import dk.sens.android.ble.generic.GenericRSSI;
-import dk.sens.android.ble.tasks.DiscoverServicesTask;
-import dk.sens.android.ble.tasks.BLETask;
-import dk.sens.android.ble.tasks.ReadCharTask;
-import dk.sens.android.util.SimpleTimer;
-
-import java.util.UUID;
-
 import dk.sens.android.ble.tasks.BLEDisconnectTask;
+import dk.sens.android.ble.tasks.BLETask;
 import dk.sens.android.ble.tasks.BLETaskQueue;
+import dk.sens.android.ble.tasks.DiscoverServicesTask;
+import dk.sens.android.ble.tasks.ReadCharTask;
 import dk.sens.android.ble.tasks.SubscribeTask;
 import dk.sens.android.ble.tasks.WriteCharTask;
+import dk.sens.android.util.SimpleTimer;
 import dk.sens.android.util.Timestamp;
 
 

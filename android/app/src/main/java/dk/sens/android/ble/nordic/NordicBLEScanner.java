@@ -36,7 +36,6 @@ import dk.sens.android.ble.BLEAddress;
 import dk.sens.android.ble.generic.GenericBLEDevice;
 import dk.sens.android.ble.generic.GenericBLEScanner;
 import dk.sens.android.ble.generic.GenericBLEScannerImpl;
-
 import dk.sens.android.ble.generic.GenericRSSI;
 import dk.sens.android.util.ErrorHandling;
 import dk.sens.android.util.TimeDelta;

@@ -1,5 +1,4 @@
 
-
 import 'package:flutter/services.dart';
 
 class BluetoothController{
@@ -8,12 +7,12 @@ class BluetoothController{
 
   Future<void> onConnected() async{
     try{
+      print("BEFORE WE WEEE:");
       await platform.invokeMethod("onDeviceConnected");
+      print("WEEEEEE");
 
     }on PlatformException catch (e){
       print('FAILED HORRIBLY' + e.message);
     }
   }
-
-
 }

@@ -23,6 +23,10 @@ package dk.sens.android.ble.sim;
  *
  */
 
+import java.util.LinkedList;
+import java.util.Random;
+import java.util.UUID;
+
 import dk.sens.android.ble.BLEAddress;
 import dk.sens.android.ble.generic.GenericBLEDevice;
 import dk.sens.android.ble.generic.GenericBLEScanRecord;
@@ -30,10 +34,6 @@ import dk.sens.android.ble.generic.GenericBLEScanner;
 import dk.sens.android.ble.generic.GenericBLEScannerImpl;
 import dk.sens.android.ble.generic.GenericRSSI;
 import dk.sens.android.util.SimpleTimer;
-
-import java.util.LinkedList;
-import java.util.Random;
-import java.util.UUID;
 
 public class SimBLEScanner extends GenericBLEScannerImpl
 {

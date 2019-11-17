@@ -23,9 +23,9 @@ package dk.sens.android.ble.generic;
  *
  */
 
-import java.util.UUID;
-
 import android.bluetooth.BluetoothAdapter;
+
+import java.util.UUID;
 
 import dk.sens.android.ble.BLEAddress;
 
