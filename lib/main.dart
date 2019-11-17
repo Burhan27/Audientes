@@ -1,3 +1,4 @@
+import 'package:audientes/BluetoothController.dart';
 import 'package:flutter/material.dart';
 import 'startscreen.dart';
 import 'settings.dart';
@@ -8,6 +9,7 @@ import 'dart:async';
 
 void main() async {
   bool isInDebugMode = false;
+  BluetoothController bc = new BluetoothController();
 
   FlutterError.onError = (FlutterErrorDetails details) {
     if (isInDebugMode) {
@@ -22,6 +24,7 @@ void main() async {
 
   await FlutterCrashlytics().initialize();
 
+  bc.onConnected();
   runZoned<Future<Null>>(() async {
     runApp(MainApp( ));
   }, onError: (error, stackTrace) async {

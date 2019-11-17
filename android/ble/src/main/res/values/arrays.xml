@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string-array name="genders">
-        <item name="m">Male</item>
-        <item name="f">Female</item>
-        <item name="u">Unknown</item>
-    </string-array>
-</resources>
