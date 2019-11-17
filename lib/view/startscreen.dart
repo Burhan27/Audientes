@@ -6,7 +6,6 @@ import 'package:audientes/model/programItem.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:system_shortcuts/system_shortcuts.dart';
 import 'package:flutter/services.dart';
-import 'package:audientes/widget_slider.dart';
 import 'package:audientes/view/widgets/programItemView.dart';
 import 'package:audientes/controller/ProgramController.dart';
 
@@ -32,7 +31,7 @@ class StartScreen extends State<MyApp> {
     programItems.add(new ProgramItem("test2", Icons.home, Colors.white, false, false, 6));
     programItems.add(new ProgramItem("test3", Icons.terrain, Colors.white, false, false, 0));
     programItems.add(new ProgramItem("test3", Icons.home, Colors.white, false, false, 0));
-    programController.createProgram(programItems.elementAt(1));
+  //  programController.createProgram(programItems.elementAt(1));
   }
 
   Future<void> initPlatformState() async {
