@@ -6,7 +6,6 @@ import 'package:open_settings/open_settings.dart';
 class BluetoothButton extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return BluetoothButtonState();
   }
 }
@@ -23,20 +22,13 @@ class BluetoothButtonState extends State<BluetoothButton> {
           children: [
             RaisedButton(
               child: Text('Get Battery Level'),
-              onPressed: _getBatteryLevel,
+              onPressed: _onConnected,
             ),
             Text(_batteryLevel),
           ],
         ),
       ),
     );
-    // TODO: implement build
-    /*return Container(
-      child: GestureDetector(
-        child: Text(_batteryLevel, style: new TextStyle(color: Colors.white, fontSize: 20),),
-        onTap: ()=> _getBatteryLevel(),
-      ),
-    );*/
   }
 
   static const platform =  const MethodChannel("audientes.android");
@@ -44,13 +36,11 @@ class BluetoothButtonState extends State<BluetoothButton> {
   Future<void> _onConnected() async{
     String batteryLevel;
     try{
-      print("ALEN har ingen venner");
       final int result = await platform.invokeMethod("onDeviceConnected");
-      print("Alle hader ALEN");
       batteryLevel = 'Battery level at $result % .';
 
     }on PlatformException catch (e){
-      print('FAILED HORRIBLY' + e.message);
+      print('FAILED HORRIBLY: ' + e.message);
     }
 
     setState(() {

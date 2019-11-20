@@ -18,7 +18,6 @@ import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugins.GeneratedPluginRegistrant;
 
 public final class MainActivity extends FlutterActivity {
-    private AudientesApp ble;
     private static final String CHANNEL = "audientes.android";
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,19 +27,10 @@ public final class MainActivity extends FlutterActivity {
                     @Override
                     public void onMethodCall(MethodCall call, MethodChannel.Result result) {
                         // Note: this method is invoked on the main thread.
-                        if(call.method == "onDeviceConnected"){
-                            int batteryLevel = onDeviceConnected();
-                            if (batteryLevel != -1) {
-                                result.success(batteryLevel);
-                            } else {
-                                result.error("UNAVAILABLE", "Battery level not available.", null);
-                            }
-                        }
-                        else if (call.method.equals("getBatteryLevel")) {
-                            int batteryLevel = getBatteryLevel();
-
-                            if (batteryLevel != -1) {
-                                result.success(batteryLevel);
+                        if(call.method.equals("onDeviceConnected")){
+                            int response = onDeviceConnected();
+                            if (response != -1) {
+                                result.success(response);
                             } else {
                                 result.error("UNAVAILABLE", "Battery level not available.", null);
                             }
@@ -55,37 +45,20 @@ public final class MainActivity extends FlutterActivity {
 
         int result = -1;
 
-        System.out.println("ALEN LUDER");
-        android.util.Log.d("BITCONNECT", "onDeviceConnected: " + result);
+        android.util.Log.d("METHODCHANNEL", "onDeviceConnected: " + result);
 
         if(AudientesApp.instance.isPaired() && AudientesApp.mAudientesDevice.isConnected()){
-            Log.d("BITCONNECT","IT WORKS");
+            Log.d("METHODCHANNEL","DEVICE CONNECTED");
             result = 99;
         }
         else{
-            Log.d("BITCONNECT","IT ALEN");
+            Log.d("METHODCHANNEL","DEVICE NOT CONNECTED");
             result = 50;
         }
 
+        android.util.Log.d("BITCONNECT", "onDeviceConnected AFTER: " + result);
         return result;
 
     }
 
-    private int getBatteryLevel() {
-        int batteryLevel = -1;
-        if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP) {
-            BatteryManager batteryManager = (BatteryManager) getSystemService(BATTERY_SERVICE);
-            batteryLevel = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
-        } else {
-            Intent intent = new ContextWrapper(getApplicationContext()).
-                    registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-            batteryLevel = (intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) * 100) /
-                    intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
-        }
-
-        return batteryLevel;
-    }
-
-    public void onDeviceDisconnected() {
-    }
 }

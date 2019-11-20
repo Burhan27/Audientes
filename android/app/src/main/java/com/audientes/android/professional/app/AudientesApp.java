@@ -34,7 +34,7 @@ public class AudientesApp extends Application implements GenericBLEScanner.disco
 {
     private static final String TAG = "AD AudientesApp";
 
-    public static AudientesApp instance;
+    public static AudientesApp instance = new AudientesApp();
     Realm realm;
 
     private Config mConfig;
