@@ -32,7 +32,7 @@ public final class MainActivity extends FlutterActivity {
                             if (response != -1) {
                                 result.success(response);
                             } else {
-                                result.error("UNAVAILABLE", "Battery level not available.", null);
+                                result.error("UNAVAILABLE", "NO RESPONSE FROM METHOD", null);
                             }
                         } else {
                             result.notImplemented();
@@ -56,9 +56,11 @@ public final class MainActivity extends FlutterActivity {
             result = 50;
         }
 
-        android.util.Log.d("BITCONNECT", "onDeviceConnected AFTER: " + result);
+        android.util.Log.d("METHODCHANNEL", "onDeviceConnected AFTER: " + result);
         return result;
 
     }
 
+    public void onDeviceDisconnected() {
+    }
 }
