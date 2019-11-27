@@ -1,3 +1,4 @@
+import 'package:audientes/AppColors.dart';
 import 'package:audientes/view/widgets/mixer.dart';
 import 'package:audientes/view/widgets/settingOption.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,7 +10,7 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xff131313),
+          backgroundColor: AppColors().background,
           title: Text(
             "Settings",
             style: TextStyle(color: Colors.white, fontSize: 25),
@@ -18,7 +19,7 @@ class Settings extends StatelessWidget {
         body:Container(
             width: double.infinity,
             alignment: Alignment.center,
-            color: Color(0xff131313),
+            color: AppColors().background,
             child:
             new StreamBuilder<QuerySnapshot>(
                 stream: Firestore.instance.collection('Programs').snapshots(),
