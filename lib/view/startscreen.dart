@@ -1,5 +1,8 @@
+import 'package:audientes/AppColors.dart';
+import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:volume/volume.dart';
 import 'dart:async';
 import 'package:audientes/model/programItem.dart';
@@ -8,8 +11,6 @@ import 'package:system_shortcuts/system_shortcuts.dart';
 import 'package:flutter/services.dart';
 import 'package:audientes/view/widgets/programItemView.dart';
 import 'package:audientes/controller/ProgramController.dart';
-
-
 
 class MyApp extends StatefulWidget {
   @override
@@ -21,19 +22,6 @@ class StartScreen extends State<MyApp> {
   List<ProgramItem> programItems = new List<ProgramItem>();
   ProgramController programController = new ProgramController();
 
-
-  @override
-  void initState() {
-    super.initState();
-    initPlatformState();
-    updateVolumes();
-    programItems.add(new ProgramItem("test1", Icons.home, Colors.white, false, false, 0));
-    programItems.add(new ProgramItem("test2", Icons.home, Colors.white, false, false, 6));
-    programItems.add(new ProgramItem("test3", Icons.terrain, Colors.white, false, false, 0));
-    programItems.add(new ProgramItem("test3", Icons.home, Colors.white, false, false, 0));
-  //  programController.createProgram(programItems.elementAt(1));
-  }
-
   Future<void> initPlatformState() async {
     await Volume.controlVolume(AudioManager.STREAM_MUSIC);
   }
@@ -43,7 +31,7 @@ class StartScreen extends State<MyApp> {
     maxVol = await Volume.getMaxVol;
     // get Current Volume
     currentVol = await Volume.getVol;
- //   currentVol = 4;
+    //   currentVol = 4;
     setState(() {});
   }
 
@@ -54,169 +42,167 @@ class StartScreen extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xff131313),
-        title: Text('Audientes'),
-      ),
       body: Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Test(),
-             threeButtons(),
-            ProgramItemView(programItems),
+            ClipPath(
+              clipper: CurveClip(),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 2,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: clickableSound("L", 0.0),
+                      flex: 4,
+                    ),
+                    Expanded(
+                      child: programIcon(),
+                      flex: 6,
+                    ),
+                    Expanded(
+                      child: testVert(),
+                      flex: 4,
+                    ),
+                  ],
+                ),
+                color: AppColors().bar,
+              ),
+            ),
           ],
         ),
-        color: Color(0xff131313),
+        color: AppColors().background,
+        width: double.infinity,
+        height: double.infinity,
       ),
     );
   }
 
-  Widget threeButtons() {
-    return Row(
-      //    mainAxisAlignment: MainAxisAlignment.center,
-
-      //   mainAxisAlignment: ,
-      //  crossAxisAlignment: ,
-      //  mainAxisSize: ,
-
-      children: [
-     /*   Expanded(
-          child: Icon(Icons.directions_bus,
-              size: MediaQuery
-                  .of(context)
-                  .size
-                  .width * 0.125, color: Colors.green),
-          flex: 2,
-        ), */
-        Expanded(
-
-          child: frontScreenIcon(Colors.blue, Colors.white, MediaQuery
-              .of(context)
-              .size
-              .width * 0.50, Icons.bluetooth_connected, 0, ''),
-
-          flex: 6,
-        ),
-          /*     Expanded(
-          child :RawMaterialButton(
-            onPressed: ( ) {
-              Navigator.pushNamed(context, '/settings');
-            },
-            child:
-
-           new Icon(
-              Icons.menu,
-              color: Colors.white,
-              size: MediaQuery
-                  .of(context)
-                  .size
-                  .width * 0.125,
-            ),
-            shape: new CircleBorder(),
-            elevation: 2.0,
-            padding: const EdgeInsets.all(15.0),
-          ),
-
-
-
-          flex: 2,
-        ), */
-      ],
-    );
-
-
-
-  }
-
-  Widget Test() {
+  Widget programIcon() {
     return Container(
-        decoration: new BoxDecoration(
-          borderRadius: new BorderRadius.circular(16.0),
-          color: Color(0xff303030),
-        ),
-        width: MediaQuery
-            .of(context)
-            .size
-            .width * 0.8,
-        child: Row(children: <Widget>[
-          Expanded(
-            child: RawMaterialButton(
-              onPressed: () {},
-              child: new Icon(
-                FontAwesomeIcons.volumeDown,
-                color: Colors.blue,
-                size: 20.0,
-              ),
-              shape: new CircleBorder(),
-              fillColor: Colors.white,
-            ),
-            flex: 2,
-          ),
-          Expanded(
-            child: SliderTheme(
-            data: SliderThemeData(
-            thumbColor: Color(0xff38E2CF),
-            trackHeight: 10,
-            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 12.5)),
-            child: Slider(
-              min: 0.0,
-              max: maxVol + 0.0,
-             // divisions: maxVol,
-              value: currentVol / 1.0,
-              activeColor: Color(0xff38E2CF),
-              onChanged: (double d) {
-                setVol(d.toInt());
-                updateVolumes();
-              },
-            ),),
-            flex: 6,
-          ),
-          Expanded(
-            child: RawMaterialButton(
-              onPressed: ()  {
-                programItems.add(new ProgramItem("test3", Icons.access_time, Colors.white, false, false, 0));
-              },
-              child: new Icon(
-                FontAwesomeIcons.volumeUp,
-                color: Colors.blue,
-                size: 20.0,
-              ),
-              shape: new CircleBorder(),
-              fillColor: Colors.white,
-            ),
-            flex: 2,
-          )
-        ]));
-  }
-
-  Widget frontScreenIcon(Color iconColor, Color fillColor, double size,
-      IconData icon, int onClick, String text) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-
-      RawMaterialButton(
-        onPressed: (
-        ) {
-        },
         child: new Icon(
-          icon,
-          color: iconColor,
-          size: size,
+          Icons.headset,
+          size: MediaQuery.of(context).size.width / 3,
+          color: Colors.white,
         ),
-        shape: new CircleBorder(),
-        elevation: 2.0,
-        fillColor: fillColor,
-        padding: const EdgeInsets.all(15.0),
-       ),
-          Text(text,style: TextStyle(
-            color: Colors.teal
-          ),
-          )
-    ]);
+        decoration: BoxDecoration(
+            shape: BoxShape.circle, color: AppColors().background),
+        height: double.infinity,
+        width: double.infinity);
   }
 
+  Widget clickableSound(String text, double currentVol) {
+    return GestureDetector(
+      child: Container(
+        child: Text(text),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.deepPurple,
+        ),
+        height: MediaQuery.of(context).size.width / 6,
+        width: MediaQuery.of(context).size.height / 6,
+        alignment: Alignment.center,
+      ),
+      onTap: () => showDialog(
+          context: context, builder: (BuildContext context) => sliderDialog()),
+    );
+  }
 
+  Widget testVert() {
+    return Container(
+      child: FlutterSlider(
+        values: [20.0],
+        min: 0.0,
+        max: 100.0,
+        axis: Axis.vertical,
+        rtl: true,
+        handlerAnimation: FlutterSliderHandlerAnimation(
+            curve: Curves.elasticOut,
+            reverseCurve: Curves.bounceIn,
+            duration: Duration(milliseconds: 500),
+            scale: 1.5
+        ),
+        onDragging: (handlerIndex, lowerValue, upperValue) {
+          lowerValue = lowerValue;
+          upperValue = upperValue;
+          setState(() {});
+        },
+      ),
+      width: 80,
+    );
+  }
 
+  Widget verticalSlider(double value) {
+    return RotatedBox(
+      child: Container(
+        child: Slider(
+            max: 100.0,
+            min: 0.0,
+            value: value,
+            onChanged: (double q) {
+              value = q;
+              setState(() {});
+            }),
+        color: Colors.deepPurple,
+        height: 50,
+      ),
+      quarterTurns: 3,
+    );
+  }
+
+  Dialog sliderDialog() {
+    return new Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+      backgroundColor: Colors.transparent,
+      child: Container(
+        height: 300.0,
+        width: 20.0,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 15.0),
+              child: Text(
+                'Volume',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            Padding(
+                padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                child: verticalSlider(20.0)),
+            Padding(padding: EdgeInsets.only(bottom: 1.0)),
+            FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Done',
+                  style: TextStyle(color: Colors.white, fontSize: 18.0),
+                ))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CurveClip extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0.0, size.height - 50);
+    path.quadraticBezierTo(
+        size.width / 4, size.height, size.width / 2, size.height);
+    path.quadraticBezierTo(size.width - (size.width / 4), size.height,
+        size.width, size.height - 50);
+    path.lineTo(size.width, 0.0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    // TODO: implement shouldReclip
+    return null;
+  }
 }
