@@ -27,10 +27,8 @@ class StartScreen extends State<MyApp> {
     super.initState();
     initPlatformState();
     updateVolumes();
-    programItems.add(new ProgramItem("test1", Icons.home, Colors.white, false, false, 0));
-    programItems.add(new ProgramItem("test2", Icons.home, Colors.white, false, false, 6));
-    programItems.add(new ProgramItem("test3", Icons.terrain, Colors.white, false, false, 0));
-    programItems.add(new ProgramItem("test3", Icons.home, Colors.white, false, false, 0));
+   // programItems.add(new ProgramItem("test1", 2, 3, false));
+
   //  programController.createProgram(programItems.elementAt(1));
   }
 
@@ -175,7 +173,7 @@ class StartScreen extends State<MyApp> {
           Expanded(
             child: RawMaterialButton(
               onPressed: ()  {
-                programItems.add(new ProgramItem("test3", Icons.access_time, Colors.white, false, false, 0));
+         //       programItems.add(new ProgramItem("test3", 2, 5, false));
               },
               child: new Icon(
                 FontAwesomeIcons.volumeUp,
