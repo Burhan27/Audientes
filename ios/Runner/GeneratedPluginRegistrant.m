@@ -8,6 +8,7 @@
 #import <flutter_bluetooth_serial/FlutterBluetoothSerialPlugin.h>
 #import <flutter_crashlytics/FlutterCrashlyticsPlugin.h>
 #import <open_settings/OpenSettingsPlugin.h>
+#import <shared_preferences/SharedPreferencesPlugin.h>
 #import <system_shortcuts/SystemShortcutsPlugin.h>
 #import <volume/VolumePlugin.h>
 
@@ -19,6 +20,7 @@
   [FlutterBluetoothSerialPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterBluetoothSerialPlugin"]];
   [FlutterCrashlyticsPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterCrashlyticsPlugin"]];
   [OpenSettingsPlugin registerWithRegistrar:[registry registrarForPlugin:@"OpenSettingsPlugin"]];
+  [FLTSharedPreferencesPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTSharedPreferencesPlugin"]];
   [SystemShortcutsPlugin registerWithRegistrar:[registry registrarForPlugin:@"SystemShortcutsPlugin"]];
   [VolumePlugin registerWithRegistrar:[registry registrarForPlugin:@"VolumePlugin"]];
 }
