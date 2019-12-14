@@ -19,6 +19,22 @@ class ProgramController {
 
   }
 
+void updateMain(int icon, int color, String name) {
+  Firestore.instance.collection('MainProgran').document('main').updateData({'color': color, 'name': name, 'icon': icon});
+
+
+}
+
+  void setFalse( String index) {
+    Firestore.instance.collection('Programs').document(index).updateData({'isActive': false});
+  }
+
+  void setActive(String index) {
+
+  Firestore.instance.collection('Programs').document(index).updateData({'isActive': true});
+  }
+
+
   void updateProgram() {
 
   }

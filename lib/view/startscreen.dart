@@ -1,4 +1,5 @@
 import 'package:audientes/AppColors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
@@ -8,6 +9,7 @@ import 'package:audientes/model/programItem.dart';
 import 'package:audientes/view/widgets/programItemView.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:audientes/controller/ProgramController.dart';
+import 'package:audientes/view/widgets/mixer.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -19,6 +21,10 @@ class StartScreen extends State<MyApp> {
   double leftEar = 0.0, rightEar = 0.0;
   List<ProgramItem> programItems = new List<ProgramItem>();
   ProgramController programController = new ProgramController();
+  List<Color> colorList = new List<Color>();
+  List<IconData> iconList = new List<IconData>();
+  IconData iconMain = Icons.beach_access;
+  String hej = "r";
 
   Future<void> initPlatformState() async {
     await Volume.controlVolume(AudioManager.STREAM_MUSIC);
@@ -51,7 +57,35 @@ class StartScreen extends State<MyApp> {
     }
   }
 
+  fillColorList(List<Color> colorList) {
+    if(colorList.isEmpty) {
+      colorList.add(Colors.blue);
+      colorList.add(Colors.red);
+      colorList.add(Colors.purple);
+      colorList.add(Colors.yellow);
+      colorList.add(Colors.green);
+      colorList.add(Colors.teal);
+      colorList.add(Colors.deepOrange);
+      colorList.add(Colors.pink);
+      colorList.add(Colors.tealAccent);
+    }
+  }
 
+  fillIconList(List<IconData> iconList) {
+    if(iconList.isEmpty) {
+      iconList.add(Icons.airport_shuttle);
+      iconList.add(Icons.nature_people);
+      iconList.add(Icons.directions_run);
+      iconList.add(Icons.tv);
+      iconList.add(Icons.radio);
+      iconList.add(Icons.hotel);
+      iconList.add(Icons.phone_in_talk);
+      iconList.add(Icons.audiotrack);
+      iconList.add(Icons.restaurant);
+
+
+    }
+  }
 
   readEar() async {
     final prefs = await SharedPreferences.getInstance();
@@ -59,11 +93,18 @@ class StartScreen extends State<MyApp> {
     rightEar = prefs.getDouble("Rightear") ?? 0.0;
   }
 
+  findItem(async) {
+
+  }
+
+
 
   @override
   void initState() {
     super.initState();
     readEar();
+    fillIconList(iconList);
+    fillColorList(colorList);
   }
 
   updateVolumes() async {
@@ -93,11 +134,8 @@ class StartScreen extends State<MyApp> {
                 child: Row(
                   children: <Widget>[
                     Expanded(
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(height: 10),
 
-                      RawMaterialButton(
+                      child: RawMaterialButton(
                         onPressed: ()  {
                           showDialogLeft();
                         },
@@ -105,14 +143,11 @@ class StartScreen extends State<MyApp> {
                         fillColor: Colors.green,
                       ),
 
-                          Text(leftEar.toString()),
 
-                        ]
-                      ),
                       flex: 4,
                     ),
                     Expanded(
-                      child: programIcon(),
+                      child: testing123(),
                       flex: 6,
                     ),
                     Expanded(
@@ -124,6 +159,8 @@ class StartScreen extends State<MyApp> {
                 color: AppColors().bar,
               ),
             ),
+
+
           ],
         ),
         color: AppColors().background,
@@ -135,10 +172,19 @@ class StartScreen extends State<MyApp> {
 
   Widget programIcon() {
     return Container(
-        child: new Icon(
-          Icons.headset,
-          size: MediaQuery.of(context).size.width / 3,
+        child: new RawMaterialButton(
+          child: new Icon(
+          iconMain,
           color: Colors.white,
+          ),
+          shape: new CircleBorder(),
+          onPressed: (
+              ) {
+            selectColorDialog();
+            setState(() {
+              iconMain = Icons.directions_run;
+            });
+          },
         ),
         decoration: BoxDecoration(
             shape: BoxShape.circle, color: AppColors().background),
@@ -262,6 +308,143 @@ class StartScreen extends State<MyApp> {
       ),
     );
   }
+
+
+  Widget testing123() {
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('MainProgran').snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError)
+          return new Text('Error: ${snapshot.error}');
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting:
+            return new Text('Loading...');
+          default:
+            return new Container(
+                child: new RawMaterialButton(
+                  child: new Icon(
+                    iconList.elementAt(snapshot.data.documents[0]['icon']),
+                    color:    colorList.elementAt(snapshot.data.documents[0]['color']),
+                  ),
+                  shape: new CircleBorder(),
+                  onPressed: (
+                      ) {
+                    selectColorDialog();
+                    setState(() {
+                      iconMain = Icons.directions_run;
+                    });
+                  },
+                ),
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, color: AppColors().background),
+                height: double.infinity,
+                width: double.infinity
+            );
+        }
+      }
+    );
+
+    }
+
+
+
+  void selectColorDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext contex) {
+          return AlertDialog(
+            contentPadding: const EdgeInsets.all(10.0),
+            title: new Text(
+              'Pick a color!',
+              style:
+              new TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            ),
+            content: new Container(
+
+                width: MediaQuery.of(context).size.width * .7,
+                height: MediaQuery.of(context).size.width * .6,
+                color: Colors.transparent,
+                child: StreamBuilder<QuerySnapshot>(
+                    stream: Firestore.instance.collection('Programs').snapshots(),
+                    builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.hasError)
+                        return new Text('Error: ${snapshot.error}');
+                      switch (snapshot.connectionState) {
+                        case ConnectionState.waiting:
+                          return new Text('Loading...');
+                        default:
+                          return new GridView.builder(itemCount: snapshot.data.documents.length,gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                            itemBuilder: (BuildContext ctxt,int index) {
+                            return new RawMaterialButton( onPressed: () {
+                              iconMain =  iconList.elementAt(snapshot.data.documents[index]['icon']);
+
+                              for(int t = 0; t < snapshot.data.documents.length; t++) {
+                                programController.setFalse(snapshot.data.documents[t]['name']);
+                              }
+
+                              programController.setActive(snapshot.data.documents[index]['name']);
+
+                              programController.updateMain(snapshot.data.documents[index]['icon'], snapshot.data.documents[index]['color'], snapshot.data.documents[index]['name']);
+
+
+
+
+                              setState(() {
+                              });
+                              Navigator.pop(context);
+                            },
+                              child: new Icon(
+                                iconList.elementAt(snapshot.data.documents[index]['icon']),
+                                color: colorList.elementAt(snapshot.data.documents[index]['color']),
+                              ),
+                              shape: new CircleBorder(),
+
+                            );
+                            },
+
+                          );
+
+
+                      }
+                    }
+                )
+
+
+
+
+
+/*
+
+                child:   GridView.count(crossAxisCount: 5,
+                  children: List.generate(colorList.length, (index) {
+                    return RawMaterialButton(
+                      onPressed: ()  {
+                        colorCode = index;
+                        test = colorList.elementAt(index);
+                        Navigator.pop(context);
+                        setState(() {});
+                      },
+                      shape: new CircleBorder(),
+                      fillColor: colorList.elementAt(index),
+                    );
+                  }),
+                  padding: const EdgeInsets.all(10),
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                )
+*/
+
+            ),
+          );
+        }
+    );
+  }
+
+
+
+
+
+
 
 /*
   void selectIconDialog() {
