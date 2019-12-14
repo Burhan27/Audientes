@@ -13,7 +13,7 @@ class HearingTest extends StatefulWidget {
 }
 
 class HearingTestState extends State<HearingTest> {
-  List<int> results;
+  List<int> results = new List<int>();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,8 @@ class HearingTestState extends State<HearingTest> {
             AvatarGlow(
               endRadius: MediaQuery.of(context).size.width / 3,
               child: FloatingActionButton(
-                  backgroundColor: Colors.deepPurple, onPressed: null),
+                  backgroundColor: Colors.deepPurple,
+                  onPressed: addResult),
             ),
 
             RaisedButton(child: Text("Stop test"
@@ -50,11 +51,11 @@ class HearingTestState extends State<HearingTest> {
   }
 
   void addResult(){
-    if(results.length > 6){
+    if(results.length < 6){
       results.add(_generateRandom());
     }
-    if(results.length == 6){
-      
+    if(results.length >= 6){
+      Navigator.pop(context);
     }
   }
 

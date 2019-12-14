@@ -13,5 +13,8 @@ class ResultItem{
   int r5;
   int r6;
 
+  ResultItem(this.l1, this.l2, this.l3, this.l4, this.l5, this.l6, this.r1,
+      this.r2, this.r3, this.r4, this.r5, this.r6);
+
 
 }
