@@ -5,12 +5,15 @@ class mixer extends StatefulWidget {
   String text;
   double frequency;
 
-  mixer(this.text, this.frequency);
+  mixer(String text, double frequency) {
+    this.text = text;
+    this.frequency = frequency;
+  }
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return mixerState(this.text, this.frequency);
+    return mixerState(text, frequency);
   }
 
 }
@@ -19,7 +22,12 @@ class mixerState extends State<mixer> {
   String text;
   double frequency;
 
-  mixerState(this.text, this.frequency);
+  mixerState(String text, double frequency) {
+    this.text = text;
+    this.frequency = frequency;
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Container (
@@ -27,7 +35,7 @@ class mixerState extends State<mixer> {
         /*     Expanded(child: Text('Noise'),
             flex: 1,),
 */
-        Text(text, style: TextStyle(color: Color(0xff38E2CF)),),
+     //   Text(text, style: TextStyle(color: Color(0xff38E2CF)),),
 
         SliderTheme(
           data: SliderThemeData(
@@ -42,7 +50,10 @@ class mixerState extends State<mixer> {
             value: frequency,
             onChanged: (double q) {
               frequency = q;
+              print('test1' + frequency.toString());
               setState(() {
+                frequency = q;
+                print('test2' + frequency.toString());
               });
             },
           ),

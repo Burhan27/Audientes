@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:audientes/model/programItem.dart';
+import 'package:audientes/controller/ProgramController.dart';
 
 class ProgramItemView extends StatefulWidget {
 //  ProgramItemView(programItems);
@@ -16,6 +17,7 @@ class ProgramItemView extends StatefulWidget {
 
 class ProgramItemViewState extends State<ProgramItemView> {
 
+  ProgramController programController = new ProgramController();
   List<ProgramItem> programItems = new List<ProgramItem>();
 
   ProgramItemViewState(this.programItems);
@@ -65,8 +67,8 @@ class ProgramItemViewState extends State<ProgramItemView> {
                                   setState(() {});
                                 },
                                 child: new Icon(
-                                  Icons.home,
-                                  color: Colors.black,
+                                  programController.getIcon(snapshot.data.documents[index]['icon']),
+                                  color: Colors.white,
                                   size: MediaQuery
                                       .of(context)
                                       .size
@@ -77,11 +79,11 @@ class ProgramItemViewState extends State<ProgramItemView> {
                                 fillColor: /* programItems
         .elementAt(index)
         .isChecked ? Colors.green : Colors.white, */
-                                Colors.white,
+                        programController.getColor(snapshot.data.documents[index]['color']),
                                 padding: const EdgeInsets.all(15.0),
                               ),
 
-                              Text(snapshot.data.documents[index]['optiontext'],
+                              Text(snapshot.data.documents[index]['name'],
                                   style: TextStyle(
                                       color: Colors.teal
                                   )

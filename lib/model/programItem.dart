@@ -1,39 +1,30 @@
 import 'package:flutter/material.dart';
 
 class ProgramItem {
-  String optionText;
-  IconData iconData;
-  Color color;
-  bool expanded, isChecked;
-  int clicked;
+  String name;
+  int iconData;
+  int color;
+  bool isActive;
+  double highPlus, high, medium, low, lowPlus;
 
-   ProgramItem(String optionText, IconData iconData, Color color,  bool expanded, bool isChecked, int clicked) {
-     this.optionText = optionText;
+   ProgramItem(String name, int iconData, int color,  bool isActive, double highPlus, double high, double medium, double low, double lowPlus) {
+     this.name = name;
      this.iconData = iconData;
      this.color = color;
-     this.expanded = false;
-     this.isChecked = false;
-     this.clicked = 0;
+     this.isActive = false;
+     this.highPlus = highPlus;
+     this.high = high;
+     this.medium = medium;
+     this.low = low;
+     this.lowPlus = lowPlus;
   }
 
 
-   int compareTo(ProgramItem programItem) {
-
-    if (this.clicked > programItem.clicked) {
-      return -1;
-    } else if (this.clicked < programItem.clicked) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
-
-
-  void setClicked() {
-     if(isChecked) {
-      this.isChecked = false;
+  void setActive() {
+     if(isActive) {
+      this.isActive = false;
      } else {
-       this.isChecked = true;
+       this.isActive = true;
      }
   }
 
