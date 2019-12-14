@@ -3,10 +3,12 @@ import 'package:audientes/BluetoothController.dart';
 import 'package:flutter/material.dart';
 import 'package:audientes/view/startscreen.dart';
 import 'package:audientes/view/settings.dart';
-import 'package:audientes/view/hearingTest.dart';
+import 'package:audientes/view/ResultScreen.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_crashlytics/flutter_crashlytics.dart';
 import 'dart:async';
+
+import 'controller/router.dart';
 
 
 void main() async {
@@ -41,13 +43,12 @@ void main() async {
 
 
 
-  //  onGenerateRoute: Router.generateRoute,
-  // initialRoute: '/',
 
 class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      onGenerateRoute: Router.generateRoute,
       home: NaviBar(),
     );
   }
@@ -65,7 +66,7 @@ class _NaviBarState extends State<NaviBar> {
   final _pageOptions = [
     MyApp(),
     Settings(),
-    HeartinTest(),
+    ResultScreen(),
   ];
 
   void _onTabTapped(int index) {

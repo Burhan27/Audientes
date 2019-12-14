@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-class HeartinTest extends StatefulWidget {
+class ResultScreen extends StatefulWidget {
   @override
   _TestHomeScreen createState() => _TestHomeScreen();
 }
 
-class _TestHomeScreen extends State<HeartinTest> {
+class _TestHomeScreen extends State<ResultScreen> {
 
   bool test = true;
 
@@ -23,7 +23,7 @@ class _TestHomeScreen extends State<HeartinTest> {
             child: Text("Yes, start a new test"),
             color: Colors.red,
             textColor: Colors.white,
-            onPressed: () {},
+            onPressed: () => Navigator.pushNamed(context,'/hear'),
           ),
           MaterialButton(
             elevation: 5.0,
