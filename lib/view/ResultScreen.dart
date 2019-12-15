@@ -9,6 +9,9 @@ class ResultScreen extends StatefulWidget {
 class _TestHomeScreen extends State<ResultScreen> {
 
   bool test = true;
+  List<List<double>> listing = new List<List<double>>();
+  List<double> results = new List<double>();
+  List<double> results2 = new List<double>();
 
   proceedDialog(BuildContext context) {
     return showDialog(context: context, builder: (context) {
@@ -39,8 +42,41 @@ class _TestHomeScreen extends State<ResultScreen> {
     });
   }
 
+  @override
+  void initState() {
+    super.initState();
+    results.add(2);
+    results.add(4);
+    results.add(6);
+    results.add(7);
+    results.add(4);
+    results.add(7);
+    results.add(6);
+    results.add(1);
+    results.add(9);
+    results.add(2);
+    results.add(5);
+    results.add(7);
 
-  LineChartData sampleData2() {
+    results2.add(2);
+    results2.add(4);
+    results2.add(6);
+    results2.add(7);
+    results2.add(4);
+    results2.add(7);
+    results2.add(6);
+    results2.add(1);
+    results2.add(9);
+    results2.add(2);
+    results2.add(5);
+    results2.add(7);
+
+
+    listing.add(results);
+    listing.add(results2);
+  }
+
+  LineChartData sampleData2(List<double> data) {
     return LineChartData(
       lineTouchData: const LineTouchData(enabled: false),
       gridData: FlGridData(
@@ -150,46 +186,24 @@ class _TestHomeScreen extends State<ResultScreen> {
       maxX: 7.3,
       maxY: 10.4,
       minY: -1,
-      lineBarsData: linesBarData2(),
+      lineBarsData: linesBarData2(data),
     );
   }
 
 
-  List<LineChartBarData> linesBarData2() {
-    return [
-     /* const LineChartBarData(
-        spots: [
-          FlSpot(4, 2),
-          FlSpot(3.5, 5),
-          FlSpot(2, 10),
-          FlSpot(0.8, 20),
-          FlSpot(0.8, 40),
-          FlSpot(0, 80),
-        ],
-        isCurved: true,
-        curveSmoothness: 0,
-        colors: [
-          Color(0x4427b6fc),
-        ],
-        barWidth: 2,
-        isStrokeCapRound: true,
-        dotData: FlDotData(
-          show: true,
-        ),
-        belowBarData: BarAreaData(
-          show: false,
-        ),
-      ),
+  List<LineChartBarData> linesBarData2(List<double> data) {
 
-      */
-      const LineChartBarData(
+
+    return [
+
+      LineChartBarData(
         spots: [
-          FlSpot(1, 1),
-          FlSpot(3, 3),
-          FlSpot(5, 4),
-          FlSpot(6, 5),
-          FlSpot(7, 7),
-          FlSpot(7, 10),
+          FlSpot(2, data.elementAt(0)),
+          FlSpot(3, data.elementAt(1)),
+          FlSpot(4, data.elementAt(2)),
+          FlSpot(5, data.elementAt(3)),
+          FlSpot(6, data.elementAt(4)),
+          FlSpot(7, data.elementAt(5)),
         ],
         isCurved: true,
         curveSmoothness: 0,
@@ -206,18 +220,20 @@ class _TestHomeScreen extends State<ResultScreen> {
         ),
       ),
 
-  /*    const LineChartBarData(
+
+      LineChartBarData(
         spots: [
-          FlSpot(1, 4.8),
-          FlSpot(3, 2.9),
-          FlSpot(6, 4),
-          FlSpot(10, 2.3),
-          FlSpot(13, 6.5),
+          FlSpot(2, data.elementAt(6)),
+          FlSpot(3, data.elementAt(7)),
+          FlSpot(4, data.elementAt(8)),
+          FlSpot(5, data.elementAt(9)),
+          FlSpot(6, data.elementAt(10)),
+          FlSpot(7, data.elementAt(11)),
         ],
         isCurved: true,
         curveSmoothness: 0,
         colors: [
-          Color(0x444af699),
+          Colors.red,
         ],
         barWidth: 2,
         isStrokeCapRound: true,
@@ -229,7 +245,9 @@ class _TestHomeScreen extends State<ResultScreen> {
         ),
       ),
 
-*/
+
+
+
     ];
   }
 
@@ -252,27 +270,45 @@ class _TestHomeScreen extends State<ResultScreen> {
       padding: EdgeInsets.symmetric(horizontal: 10), //Tjek lige det her
       height: ((MediaQuery.of(context).size.height)/2.3),
     width: MediaQuery.of(context).size.width,
-    child: ListView(
-    scrollDirection: Axis.horizontal,
-      children: <Widget>[
-
-        Container(
-         decoration: new BoxDecoration(
-        borderRadius: new BorderRadius.circular(16.0),
-         color: Colors.white,
-    ),
-          margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
-          padding: EdgeInsets.symmetric(horizontal: 10), //Tjek lige det her
-          width: MediaQuery.of(context).size.width*0.8,
-          child: Column(
-              children: <Widget>[
+    child: ListView.builder(
+     itemCount: listing.length,
+        scrollDirection: Axis.horizontal,
+      itemBuilder: (BuildContext  ctxt, int index) {
+        return new Container(
+            decoration: new BoxDecoration(
+            borderRadius: new BorderRadius.circular(16.0),
+        color: Colors.white,
+        ),
+        margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 10), //Tjek lige det her
+        width: MediaQuery.of(context).size.width*0.8,
+        child: Column(
+          children: <Widget>[
             Text(
-            '03/11/2019',
-            style: TextStyle(
-              color: const Color(0xff827daa),
-              fontSize: 16,
-            ),
-            ),
+          '03/11/2019',
+          style: TextStyle(
+            color: const Color(0xff827daa),
+            fontSize: 16,
+          ),
+        ),
+            FlChart(
+              swapAnimationDuration: Duration(milliseconds: 250),
+              chart: LineChart(
+                  sampleData2(listing.elementAt(index))
+            )
+            )
+          ],
+
+        ),
+
+        );
+      },
+    ),
+    ),
+
+
+      /*
+
             FlChart(
               swapAnimationDuration: Duration(milliseconds: 250),
               chart: LineChart(
@@ -319,7 +355,7 @@ class _TestHomeScreen extends State<ResultScreen> {
     ),
     ),
 
-
+*/
 
      RaisedButton(
         child: Text('Start Hearing Test'),
