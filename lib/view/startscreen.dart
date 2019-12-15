@@ -68,7 +68,7 @@ class StartScreen extends State<MyApp> {
                           width: MediaQuery.of(context).size.height / 6,
                           alignment: Alignment.center,
                         ),
-                        onTap: () => showDialogRight(),
+                        onTap: () { showDialogRight(); },
                       ),
                       flex: 4,
                     ),
@@ -153,7 +153,6 @@ class StartScreen extends State<MyApp> {
     rightEar = prefs.getDouble("Rightear") ?? 0.0;
   }
 
-  findItem(async) {}
 
   @override
   void initState() {
@@ -161,18 +160,7 @@ class StartScreen extends State<MyApp> {
     readEar();
   }
 
-  updateVolumes() async {
-    // get Max Volume
-    maxVol = await Volume.getMaxVol;
-    // get Current Volume
-    currentVol = await Volume.getVol;
-    //   currentVol = 4;
-    setState(() {});
-  }
 
-  setVol(int i) async {
-    await Volume.setVol(i);
-  }
 
   Widget programIcon() {
     fillIconList(iconList);
@@ -210,9 +198,8 @@ class StartScreen extends State<MyApp> {
                         Container(
                           child: RawMaterialButton(
                             onPressed: () {
-                              iconMain = iconList.elementAt(index);
                               Navigator.pop(context);
-                              setState(() {});
+
                             },
                             shape: new CircleBorder(),
                             child: new Icon(
@@ -360,7 +347,7 @@ class DialogPickerState extends State<DialogPicker> {
             Padding(padding: EdgeInsets.only(bottom: 1.0)),
             FlatButton(
                 onPressed: () {
-                  Navigator.pop(context, ear);
+                  Navigator.pop(context);
                 },
                 child: Text(
                   'Done',
