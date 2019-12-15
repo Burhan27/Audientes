@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:audientes/AppColors.dart';
 import 'package:audientes/controller/ProgramController.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class createProgram extends StatefulWidget {
 
 class createProgramState extends State<createProgram> {
   TextEditingController nameController = new TextEditingController();
-  String name;
+  String name = "1";
   Timer timer;
   Color test = Colors.orangeAccent;
   IconData standardIcon = Icons.headset;
@@ -20,6 +21,7 @@ class createProgramState extends State<createProgram> {
   int colorCode = 99, iconCode = 99;
   List<Color> colorList = new List<Color>();
   List<IconData> iconList = new List<IconData>();
+  bool nameEqual = false;
   ProgramController programController = new ProgramController();
   var documents = [];
 
@@ -58,6 +60,12 @@ class createProgramState extends State<createProgram> {
   @override
   void initState() {
     super.initState();
+    Firestore.instance.collection("Programs").getDocuments().then((data) {
+      var list = data.documents;
+      setState(() {
+        documents = list;
+      });
+    });
 
     fillIconList(iconList);
     fillColorList(colorList);
@@ -65,7 +73,7 @@ class createProgramState extends State<createProgram> {
 
   nameListener() {
     if (nameController.text.isEmpty) {
-      name = "";
+      name = "1";
     } else {
       name = nameController.text;
     }
@@ -170,17 +178,17 @@ class createProgramState extends State<createProgram> {
               Container(
                 width: MediaQuery.of(context).size.width*0.95,
                 child:TextField(
-                style: TextStyle(color: AppColors().bar1),
-                autofocus: false,
+                style: TextStyle(color: Colors.white),
+                autofocus: true,
                 onChanged: (text) {
                   name = text;
                 },
                 decoration: new InputDecoration(
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: AppColors().bar2),
+                    borderSide: BorderSide(color: AppColors().highlight),
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
-                  labelStyle: TextStyle(color: AppColors().bar2),
+                  labelStyle: TextStyle(color:Colors.white),
                   labelText: 'Program name',
                   fillColor: AppColors().text,
                   focusColor: AppColors().highlight,
@@ -303,7 +311,7 @@ class createProgramState extends State<createProgram> {
                               inactiveTrackColor: AppColors().inactive,
                               activeTrackColor: AppColors().highlight,
                               inactiveTickMarkColor: AppColors().highlight,
-                              activeTickMarkColor: AppColors().orange1,
+                              activeTickMarkColor: AppColors().highlight,
                               thumbShape: RoundSliderThumbShape(
                                   enabledThumbRadius: 15)),
                           child: Slider(
@@ -326,7 +334,7 @@ class createProgramState extends State<createProgram> {
                               inactiveTrackColor: AppColors().inactive,
                               activeTrackColor: AppColors().highlight,
                               inactiveTickMarkColor: AppColors().highlight,
-                              activeTickMarkColor: AppColors().orange1,
+                              activeTickMarkColor: AppColors().highlight,
                               thumbShape: RoundSliderThumbShape(
                                   enabledThumbRadius: 15)),
                           child: Slider(
@@ -349,7 +357,7 @@ class createProgramState extends State<createProgram> {
                               inactiveTrackColor: AppColors().inactive,
                               activeTrackColor: AppColors().highlight,
                               inactiveTickMarkColor: AppColors().highlight,
-                              activeTickMarkColor: AppColors().orange1,
+                              activeTickMarkColor: AppColors().highlight,
                               thumbShape: RoundSliderThumbShape(
                                   enabledThumbRadius: 15)),
                           child: Slider(
@@ -372,7 +380,7 @@ class createProgramState extends State<createProgram> {
                               inactiveTrackColor: AppColors().inactive,
                               activeTrackColor: AppColors().highlight,
                               inactiveTickMarkColor: AppColors().highlight,
-                              activeTickMarkColor: AppColors().orange1,
+                              activeTickMarkColor: AppColors().highlight,
                               thumbShape: RoundSliderThumbShape(
                                   enabledThumbRadius: 15)),
                           child: Slider(
@@ -395,7 +403,7 @@ class createProgramState extends State<createProgram> {
                               inactiveTrackColor: AppColors().inactive,
                               activeTrackColor: AppColors().highlight,
                               inactiveTickMarkColor: AppColors().highlight,
-                              activeTickMarkColor: AppColors().orange1,
+                              activeTickMarkColor: AppColors().highlight,
                               thumbShape: RoundSliderThumbShape(
                                   enabledThumbRadius: 15)),
                           child: Slider(
@@ -430,10 +438,29 @@ class createProgramState extends State<createProgram> {
                         borderRadius: new BorderRadius.circular(18.0),
                         side: BorderSide()),
                     onPressed: () {
+
                       setState(() {});
 
-                      if (colorCode == 99 || iconCode == 99) {
-                        Navigator.pop(context);
+
+                      for(int o = 0; o < documents.length; o++) {
+                        if(documents[o].data['name'] == name) {
+                          nameEqual = true;
+                          break;
+                        } else {
+                          nameEqual = false;
+                        }
+                      }
+
+                      if(nameEqual) {
+                        missingAlertDialog("Name already exist", "Choose a name that does not exsist!");
+                      } else if (colorCode == 99) {
+                        missingAlertDialog("Missing color", "Choose a color!");
+                      } else if (iconCode == 99) {
+                      missingAlertDialog("Missing icon", "Choose a icon!");
+                    } else if ( name.length < 2) {
+                        missingAlertDialog("Name is too short", "Choose a name over 2 letters!");
+                      } else if (name.length > 6){
+                        missingAlertDialog("Name is too long", "Choose a name below 10 letters!");
                       } else {
                         programController.createProgram2(name, colorCode,
                             iconCode, high, highPlus, medium, low, lowPlus);
@@ -446,5 +473,33 @@ class createProgramState extends State<createProgram> {
             ],
           )),
     );
+
+
+
+
+
   }
+
+  void missingAlertDialog(String reason, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: new Text(reason),
+          content: new Text(message),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text("Okay"),
+              onPressed:() {
+                Navigator.of(context).pop();
+              },
+            ),
+          ]
+
+        );
+      }
+
+    );
+  }
+
 }

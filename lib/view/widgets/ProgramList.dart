@@ -123,7 +123,7 @@ class ProgramListState extends State<ProgramList> {
                                                 inactiveTickMarkColor:
                                                     AppColors().highlight,
                                                 activeTickMarkColor:
-                                                    AppColors().orange1,
+                                                    AppColors().highlight,
                                                 thumbShape:
                                                     RoundSliderThumbShape(
                                                         enabledThumbRadius:
@@ -170,7 +170,7 @@ class ProgramListState extends State<ProgramList> {
                                                 inactiveTickMarkColor:
                                                     AppColors().highlight,
                                                 activeTickMarkColor:
-                                                    AppColors().orange1,
+                                                    AppColors().highlight,
                                                 thumbShape:
                                                     RoundSliderThumbShape(
                                                         enabledThumbRadius:
@@ -217,7 +217,7 @@ class ProgramListState extends State<ProgramList> {
                                                 inactiveTickMarkColor:
                                                     AppColors().highlight,
                                                 activeTickMarkColor:
-                                                    AppColors().orange1,
+                                                    AppColors().highlight,
                                                 thumbShape:
                                                     RoundSliderThumbShape(
                                                         enabledThumbRadius:
@@ -264,7 +264,7 @@ class ProgramListState extends State<ProgramList> {
                                                 inactiveTickMarkColor:
                                                     AppColors().highlight,
                                                 activeTickMarkColor:
-                                                    AppColors().orange1,
+                                                    AppColors().highlight,
                                                 thumbShape:
                                                     RoundSliderThumbShape(
                                                         enabledThumbRadius:
@@ -311,7 +311,7 @@ class ProgramListState extends State<ProgramList> {
                                                 inactiveTickMarkColor:
                                                     AppColors().highlight,
                                                 activeTickMarkColor:
-                                                    AppColors().orange1,
+                                                    AppColors().highlight,
                                                 thumbShape:
                                                     RoundSliderThumbShape(
                                                         enabledThumbRadius:
