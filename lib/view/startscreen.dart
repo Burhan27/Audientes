@@ -1,9 +1,7 @@
 import 'package:audientes/AppColors.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:volume/volume.dart';
 import 'dart:async';
 import 'package:audientes/model/programItem.dart';
@@ -20,6 +18,7 @@ class StartScreen extends State<MyApp> {
   double leftEar = 0.0, rightEar = 0.0;
   List<ProgramItem> programItems = new List<ProgramItem>();
   ProgramController programController = new ProgramController();
+  List<String> nameList = new List<String>();
   List<IconData> iconList = new List<IconData>();
   IconData iconMain = Icons.headset;
   var documents = [];
@@ -104,6 +103,20 @@ class StartScreen extends State<MyApp> {
     }
   }
 
+  fillNameList(List<String> nameList) {
+    if (nameList.isEmpty) {
+      nameList.add("Windy");
+      nameList.add("Standard ");
+      nameList.add("Heavy rain");
+      nameList.add("Music");
+      nameList.add("Office");
+      nameList.add("Noisy area");
+      nameList.add("Traffic");
+      nameList.add("Night time");
+      nameList.add("Phone call");
+    }
+  }
+
   fillIconList(List<IconData> iconList) {
     if (iconList.isEmpty) {
       iconList.add(CommunityMaterialIcons.weather_windy);
@@ -163,12 +176,13 @@ class StartScreen extends State<MyApp> {
 
   Widget programIcon() {
     fillIconList(iconList);
+    fillNameList(nameList);
     return GestureDetector(
       child: Container(
           child: new Icon(
             iconMain,
             color: Colors.white,
-            size: MediaQuery.of(context).size.width/3,
+            size: MediaQuery.of(context).size.width / 3,
           ),
           decoration: BoxDecoration(
               shape: BoxShape.circle, color: AppColors().background),
@@ -188,21 +202,39 @@ class StartScreen extends State<MyApp> {
               height: 300,
               child: GridView.count(
                 crossAxisCount: 3,
-                children: List.generate(iconList.length, (index) {
-                  return RawMaterialButton(
-                    onPressed: () {
-                      iconMain = iconList.elementAt(index);
-                      Navigator.pop(context);
-                      setState(() {});
-                    },
-                    shape: new CircleBorder(),
-                    child: new Icon(
-                      iconList.elementAt(index),
-                      color: Colors.white30,
-                    ),
-                    fillColor: Colors.black,
-                  );
-                }),
+                children: List.generate(
+                  iconList.length,
+                  (index) {
+                    return Column(
+                      children: <Widget>[
+                        Container(
+                          child: RawMaterialButton(
+                            onPressed: () {
+                              iconMain = iconList.elementAt(index);
+                              Navigator.pop(context);
+                              setState(() {});
+                            },
+                            shape: new CircleBorder(),
+                            child: new Icon(
+                              iconList.elementAt(index),
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          ),
+                          width: MediaQuery.of(context).size.width / 5,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle, color: Colors.black),
+                        ),
+                        Text(
+                          nameList.elementAt(index),
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
+                    );
+                  },
+                ),
                 padding: const EdgeInsets.all(10),
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
@@ -229,9 +261,20 @@ class CurveClip extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
+    // TODO: implement should Reclip
     return null;
   }
+}
+
+class ProgramPicker extends StatefulWidget {
+  final double initialLeftEar;
+  final String keyEar;
+
+  const ProgramPicker({Key key, this.initialLeftEar, this.keyEar})
+      : super(key: key);
+
+  @override
+  DialogPickerState createState() => DialogPickerState();
 }
 
 class DialogPicker extends StatefulWidget {
