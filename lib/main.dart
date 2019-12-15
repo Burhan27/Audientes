@@ -80,6 +80,7 @@ class _NaviBarState extends State<NaviBar> {
     return Scaffold(
       body: _pageOptions[_selectedPage], // new
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: AppColors().highlight,
         backgroundColor: AppColors().NavBar,
         unselectedItemColor: Color(0xffffffff),
         onTap: _onTabTapped, // new

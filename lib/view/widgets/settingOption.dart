@@ -39,34 +39,37 @@ class settingOptionState extends State<settingOption> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Container(
-              child: Icon(
-                iconData,
-                color: Colors.white,
-                size: 35,
+      child: Card(
+        color: AppColors().bar1,
+        elevation: 50,
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                child: Icon(
+                  iconData,
+                  color: Colors.white,
+                  size: 35,
+                ),
+                color: color,
+                margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
               ),
-              color: color,
-              margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+              flex: 1,
             ),
-            flex: 1,
-          ),
-          Expanded(
-            child: Container(
-              child: Text(
-                optionText,
-                style: TextStyle(fontSize: 20, color: Colors.white),
+            Expanded(
+              child: Container(
+                child: Text(
+                  optionText,
+                  style: TextStyle(fontSize: 20, color: AppColors().text),
+                ),
               ),
-            ),
-            flex: 5,
-          )
-        ],
+              flex: 5,
+            )
+          ],
+        ),
       ),
       margin: EdgeInsets.fromLTRB(5, 20, 5, 0),
       width: double.infinity,
-      color: AppColors().bar,
     );
   }
 }

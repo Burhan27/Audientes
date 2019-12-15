@@ -1,3 +1,4 @@
+import 'package:audientes/AppColors.dart';
 import 'package:audientes/model/programItem.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
@@ -55,31 +56,31 @@ class ProgramController {
   Color getColor(int colorIndex) {
     switch(colorIndex) {
       case 0:
-        return Colors.blue;
+        return Colors.blueAccent;
         break;
       case 1:
-        return Colors.red;
+        return Colors.pinkAccent;
         break;
       case 2:
-        return Colors.purple;
+        return Colors.redAccent;
         break;
       case 3:
-        return Colors.yellow;
+        return Colors.lightBlueAccent;
         break;
       case 4:
-        return Colors.green;
+        return Colors.orangeAccent;
         break;
       case 5:
-        return Colors.teal;
+        return Colors.purpleAccent;
         break;
       case 6:
-        return Colors.deepOrange;
+        return Colors.limeAccent;
         break;
       case 7:
-        return Colors.pink;
+        return Colors.indigoAccent;
         break;
       case 8:
-        return Colors.tealAccent;
+        return Colors.amberAccent;
         break;
       default: 0;
     }
