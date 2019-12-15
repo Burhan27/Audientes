@@ -36,7 +36,7 @@ class ProgramListState extends State<ProgramList> {
     return Container(
       decoration: new BoxDecoration(
         borderRadius: new BorderRadius.circular(16.0),
-              color: AppColors().bar,
+        color: AppColors().bar,
       ),
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.width,
@@ -56,254 +56,324 @@ class ProgramListState extends State<ProgramList> {
                           documents[index].data['name'],
                           false),
                     ),
-                    expanded: Column(
-                      children: <Widget>[
-                        settingOption(
-                            programController
-                                .getColor(documents[index].data['color']),
-                            programController
-                                .getIcon(documents[index].data['icon']),
-                            documents[index].data['name'],
-                            true),
-                        new Container(
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  Text(
-                                    'High+',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  ),
-                                  Text(
-                                    'High',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  ),
-                                  Text(
-                                    'Medium',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  ),
-                                  Text(
-                                    'Low',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  ),
-                                  Text(
-                                    'Low+',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20),
-                                  ),
-                                ],
-                              ),
-                              RotatedBox(
-                                quarterTurns: 3,
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.height * 0.35,
-                                  child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: <Widget>[
-                                        SliderTheme(
-                                          data: SliderThemeData(
-                                              thumbColor: Color(0xff38E2CF),
-                                              trackHeight: 10,
-                                              thumbShape: RoundSliderThumbShape(
-                                                  enabledThumbRadius: 15)),
-                                          child: Slider(
-                                            min: 0.0,
-                                            max: 5.0,
-                                            divisions: 5,
-                                            value:
-                                                documents[index].data['high+'],
-                                            onChanged: (double h) {
-                                              documents[index].data['high+'] =
-                                                  h;
-                                              setState(() {
-                                                documents[index].data['high+'] =
-                                                    h;
-                                                programController.updateProgram(
-                                                    documents[index]
-                                                        .data['name'],
-                                                    documents[index]
-                                                        .data['high'],
-                                                    documents[index]
-                                                        .data['high+'],
-                                                    documents[index]
-                                                        .data['medium'],
-                                                    documents[index]
-                                                        .data['low'],
-                                                    documents[index]
-                                                        .data['low+']);
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                        SliderTheme(
-                                          data: SliderThemeData(
-                                              thumbColor: Color(0xff38E2CF),
-                                              trackHeight: 10,
-                                              thumbShape: RoundSliderThumbShape(
-                                                  enabledThumbRadius: 15)),
-                                          child: Slider(
-                                            min: 0.0,
-                                            max: 5.0,
-                                            divisions: 5,
-                                            value:
-                                                documents[index].data['high'],
-                                            onChanged: (double hh) {
-                                              documents[index].data['high'] =
-                                                  hh;
-                                              setState(() {
-                                                documents[index].data['high'] =
-                                                    hh;
-                                                programController.updateProgram(
-                                                    documents[index]
-                                                        .data['name'],
-                                                    documents[index]
-                                                        .data['high'],
-                                                    documents[index]
-                                                        .data['high+'],
-                                                    documents[index]
-                                                        .data['medium'],
-                                                    documents[index]
-                                                        .data['low'],
-                                                    documents[index]
-                                                        .data['low+']);
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                        SliderTheme(
-                                          data: SliderThemeData(
-                                              thumbColor: Color(0xff38E2CF),
-                                              trackHeight: 10,
-                                              thumbShape: RoundSliderThumbShape(
-                                                  enabledThumbRadius: 15)),
-                                          child: Slider(
-                                            min: 0.0,
-                                            max: 5.0,
-                                            divisions: 5,
-                                            value:
-                                                documents[index].data['medium'],
-                                            onChanged: (double m) {
-                                              documents[index].data['medium'] =
-                                                  m;
-                                              setState(() {
-                                                documents[index]
-                                                    .data['medium'] = m;
-                                                programController.updateProgram(
-                                                    documents[index]
-                                                        .data['name'],
-                                                    documents[index]
-                                                        .data['high'],
-                                                    documents[index]
-                                                        .data['high+'],
-                                                    documents[index]
-                                                        .data['medium'],
-                                                    documents[index]
-                                                        .data['low'],
-                                                    documents[index]
-                                                        .data['low+']);
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                        SliderTheme(
-                                          data: SliderThemeData(
-                                              thumbColor: Color(0xff38E2CF),
-                                              trackHeight: 10,
-                                              thumbShape: RoundSliderThumbShape(
-                                                  enabledThumbRadius: 15)),
-                                          child: Slider(
-                                            min: 0.0,
-                                            max: 5.0,
-                                            divisions: 5,
-                                            value: documents[index].data['low'],
-                                            onChanged: (double l) {
-                                              documents[index].data['low'] = l;
-                                              setState(() {
-                                                documents[index].data['low'] =
-                                                    l;
-                                                programController.updateProgram(
-                                                    documents[index]
-                                                        .data['name'],
-                                                    documents[index]
-                                                        .data['high'],
-                                                    documents[index]
-                                                        .data['high+'],
-                                                    documents[index]
-                                                        .data['medium'],
-                                                    documents[index]
-                                                        .data['low'],
-                                                    documents[index]
-                                                        .data['low+']);
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                        SliderTheme(
-                                          data: SliderThemeData(
-                                              thumbColor: Color(0xff38E2CF),
-                                              trackHeight: 10,
-                                              thumbShape: RoundSliderThumbShape(
-                                                  enabledThumbRadius: 15)),
-                                          child: Slider(
-                                            min: 0.0,
-                                            max: 5.0,
-                                            divisions: 5,
-                                            value:
-                                                documents[index].data['low+'],
-                                            onChanged: (double ll) {
-                                              print(documents[index].data);
-                                              documents[index].data['low+'] =
-                                                  ll;
-                                              setState(() {
-                                                documents[index].data['low+'] =
-                                                    ll;
-                                                programController.updateProgram(
-                                                    documents[index]
-                                                        .data['name'],
-                                                    documents[index]
-                                                        .data['high'],
-                                                    documents[index]
-                                                        .data['high+'],
-                                                    documents[index]
-                                                        .data['medium'],
-                                                    documents[index]
-                                                        .data['low'],
-                                                    documents[index]
-                                                        .data['low+']);
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                      ]),
-                                  padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                                ),
-                              ),
-                              ExpandableButton(
-                                child: Column(children: <Widget>[
-                                  Container(
-                                    child: Text(
-                                      'Done',
+                    expanded: Card(
+                      elevation: 5,
+                      color: AppColors().bar,
+                      child: Column(
+                        children: <Widget>[
+                          settingOption(
+                              programController
+                                  .getColor(documents[index].data['color']),
+                              programController
+                                  .getIcon(documents[index].data['icon']),
+                              documents[index].data['name'],
+                              true),
+                          new Container(
+                            child: Column(
+                              children: <Widget>[
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: <Widget>[
+                                    Text(
+                                      'High+',
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 20),
                                     ),
+                                    Text(
+                                      'High',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                    ),
+                                    Text(
+                                      'Medium',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                    ),
+                                    Text(
+                                      'Low',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                    ),
+                                    Text(
+                                      'Low+',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 20),
+                                    ),
+                                  ],
+                                ),
+                                RotatedBox(
+                                  quarterTurns: 3,
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.height *
+                                        0.35,
+                                    child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: <Widget>[
+                                          SliderTheme(
+                                            data: SliderThemeData(
+                                                thumbColor:
+                                                    AppColors().highlight,
+                                                trackHeight: 10,
+                                                inactiveTrackColor:
+                                                    AppColors().inactive,
+                                                activeTrackColor:
+                                                    AppColors().highlight,
+                                                inactiveTickMarkColor:
+                                                    AppColors().highlight,
+                                                activeTickMarkColor:
+                                                    AppColors().orange1,
+                                                thumbShape:
+                                                    RoundSliderThumbShape(
+                                                        enabledThumbRadius:
+                                                            15)),
+                                            child: Slider(
+                                              min: 0.0,
+                                              max: 5.0,
+                                              divisions: 5,
+                                              value: documents[index]
+                                                  .data['high+'],
+                                              onChanged: (double h) {
+                                                documents[index].data['high+'] =
+                                                    h;
+                                                setState(() {
+                                                  documents[index]
+                                                      .data['high+'] = h;
+                                                  programController
+                                                      .updateProgram(
+                                                          documents[index]
+                                                              .data['name'],
+                                                          documents[index]
+                                                              .data['high'],
+                                                          documents[index]
+                                                              .data['high+'],
+                                                          documents[index]
+                                                              .data['medium'],
+                                                          documents[index]
+                                                              .data['low'],
+                                                          documents[index]
+                                                              .data['low+']);
+                                                });
+                                              },
+                                            ),
+                                          ),
+                                          SliderTheme(
+                                            data: SliderThemeData(
+                                                thumbColor:
+                                                    AppColors().highlight,
+                                                trackHeight: 10,
+                                                inactiveTrackColor:
+                                                    AppColors().inactive,
+                                                activeTrackColor:
+                                                    AppColors().highlight,
+                                                inactiveTickMarkColor:
+                                                    AppColors().highlight,
+                                                activeTickMarkColor:
+                                                    AppColors().orange1,
+                                                thumbShape:
+                                                    RoundSliderThumbShape(
+                                                        enabledThumbRadius:
+                                                            15)),
+                                            child: Slider(
+                                              min: 0.0,
+                                              max: 5.0,
+                                              divisions: 5,
+                                              value:
+                                                  documents[index].data['high'],
+                                              onChanged: (double hh) {
+                                                documents[index].data['high'] =
+                                                    hh;
+                                                setState(() {
+                                                  documents[index]
+                                                      .data['high'] = hh;
+                                                  programController
+                                                      .updateProgram(
+                                                          documents[index]
+                                                              .data['name'],
+                                                          documents[index]
+                                                              .data['high'],
+                                                          documents[index]
+                                                              .data['high+'],
+                                                          documents[index]
+                                                              .data['medium'],
+                                                          documents[index]
+                                                              .data['low'],
+                                                          documents[index]
+                                                              .data['low+']);
+                                                });
+                                              },
+                                            ),
+                                          ),
+                                          SliderTheme(
+                                            data: SliderThemeData(
+                                                thumbColor:
+                                                    AppColors().highlight,
+                                                trackHeight: 10,
+                                                inactiveTrackColor:
+                                                    AppColors().inactive,
+                                                activeTrackColor:
+                                                    AppColors().highlight,
+                                                inactiveTickMarkColor:
+                                                    AppColors().highlight,
+                                                activeTickMarkColor:
+                                                    AppColors().orange1,
+                                                thumbShape:
+                                                    RoundSliderThumbShape(
+                                                        enabledThumbRadius:
+                                                            15)),
+                                            child: Slider(
+                                              min: 0.0,
+                                              max: 5.0,
+                                              divisions: 5,
+                                              value: documents[index]
+                                                  .data['medium'],
+                                              onChanged: (double m) {
+                                                documents[index]
+                                                    .data['medium'] = m;
+                                                setState(() {
+                                                  documents[index]
+                                                      .data['medium'] = m;
+                                                  programController
+                                                      .updateProgram(
+                                                          documents[index]
+                                                              .data['name'],
+                                                          documents[index]
+                                                              .data['high'],
+                                                          documents[index]
+                                                              .data['high+'],
+                                                          documents[index]
+                                                              .data['medium'],
+                                                          documents[index]
+                                                              .data['low'],
+                                                          documents[index]
+                                                              .data['low+']);
+                                                });
+                                              },
+                                            ),
+                                          ),
+                                          SliderTheme(
+                                            data: SliderThemeData(
+                                                thumbColor:
+                                                    AppColors().highlight,
+                                                trackHeight: 10,
+                                                inactiveTrackColor:
+                                                    AppColors().inactive,
+                                                activeTrackColor:
+                                                    AppColors().highlight,
+                                                inactiveTickMarkColor:
+                                                    AppColors().highlight,
+                                                activeTickMarkColor:
+                                                    AppColors().orange1,
+                                                thumbShape:
+                                                    RoundSliderThumbShape(
+                                                        enabledThumbRadius:
+                                                            15)),
+                                            child: Slider(
+                                              min: 0.0,
+                                              max: 5.0,
+                                              divisions: 5,
+                                              value:
+                                                  documents[index].data['low'],
+                                              onChanged: (double l) {
+                                                documents[index].data['low'] =
+                                                    l;
+                                                setState(() {
+                                                  documents[index].data['low'] =
+                                                      l;
+                                                  programController
+                                                      .updateProgram(
+                                                          documents[index]
+                                                              .data['name'],
+                                                          documents[index]
+                                                              .data['high'],
+                                                          documents[index]
+                                                              .data['high+'],
+                                                          documents[index]
+                                                              .data['medium'],
+                                                          documents[index]
+                                                              .data['low'],
+                                                          documents[index]
+                                                              .data['low+']);
+                                                });
+                                              },
+                                            ),
+                                          ),
+                                          SliderTheme(
+                                            data: SliderThemeData(
+                                                thumbColor:
+                                                    AppColors().highlight,
+                                                trackHeight: 10,
+                                                inactiveTrackColor:
+                                                    AppColors().inactive,
+                                                activeTrackColor:
+                                                    AppColors().highlight,
+                                                inactiveTickMarkColor:
+                                                    AppColors().highlight,
+                                                activeTickMarkColor:
+                                                    AppColors().orange1,
+                                                thumbShape:
+                                                    RoundSliderThumbShape(
+                                                        enabledThumbRadius:
+                                                            15)),
+                                            child: Slider(
+                                              min: 0.0,
+                                              max: 5.0,
+                                              divisions: 5,
+                                              value:
+                                                  documents[index].data['low+'],
+                                              onChanged: (double ll) {
+                                                print(documents[index].data);
+                                                documents[index].data['low+'] =
+                                                    ll;
+                                                setState(() {
+                                                  documents[index]
+                                                      .data['low+'] = ll;
+                                                  programController
+                                                      .updateProgram(
+                                                          documents[index]
+                                                              .data['name'],
+                                                          documents[index]
+                                                              .data['high'],
+                                                          documents[index]
+                                                              .data['high+'],
+                                                          documents[index]
+                                                              .data['medium'],
+                                                          documents[index]
+                                                              .data['low'],
+                                                          documents[index]
+                                                              .data['low+']);
+                                                });
+                                              },
+                                            ),
+                                          ),
+                                        ]),
+                                    padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
                                   ),
-                                ]),
-                              )
-                            ],
+                                ),
+                                ExpandableButton(
+                                  child: Container(
+                                    margin: EdgeInsets.only(top: 20),
+                                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                                    child: Text(
+                                      'Done',
+                                      style: TextStyle(
+                                          color: AppColors().text,
+                                          fontSize: 20),
+                                    ),
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            new BorderRadius.circular(10.0),
+                                        color: AppColors().bar2),
+                                  ),
+                                )
+                              ],
+                            ),
+                            width: MediaQuery.of(context).size.width,
+                            padding: EdgeInsets.only(top: 5, bottom: 5),
                           ),
-                          width: MediaQuery.of(context).size.width,
-                          margin: EdgeInsets.fromLTRB(5, 0, 5, 10),
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],

@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 
 class AppColors {
 
-  Color background = Color(0xff121212);
-  Color bar = Color(0xff202020);
-  Color bar1 = Color(0xff303030);
-  Color bar2 = Color(0xff353535);
-  Color NavBar = Color(0xff303030);
-  Color highlight = Color(0xffFF9F0A);
-  Color inactive = Color(0xff945B01);
-  Color text = Color(0xffFF9F0A);
+  Color background = Color(0xff141f24);
+  Color bar = Color(0xff15232a);
+  Color bar1 = Color(0xff1c2a35);
+  Color bar2 = Color(0xff2e3c47);
+  Color NavBar = Color(0xff15232a);
+  Color highlight = Color(0xff0ab6ff);
+  Color inactive = Color(0xff2271bf);
+  Color plainText = Colors.white;
+  Color text = Colors.white;
   Color orange1 = Color(0xffffc68a);
   Color orange2 = Color(0xffffdcb7);
   Color orange3 = Color(0xfffff2e2);

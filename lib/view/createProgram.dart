@@ -214,7 +214,7 @@ class createProgramState extends State<createProgram> {
                             Text(
                               " Color: ",
                               style: TextStyle(
-                                  color: AppColors().text, fontSize: 20),
+                                  color: AppColors().plainText, fontSize: 20),
                             ),
                             FlatButton(
                               onPressed: () {
@@ -237,7 +237,7 @@ class createProgramState extends State<createProgram> {
                             Text(
                               " Icon: ",
                               style: TextStyle(
-                                  color: AppColors().text, fontSize: 20),
+                                  color: AppColors().plainText, fontSize: 20),
                             ),
                             GestureDetector(
                               onTap: () {
@@ -269,23 +269,23 @@ class createProgramState extends State<createProgram> {
                 children: <Widget>[
                   Text(
                     'High+',
-                    style: TextStyle(color: AppColors().text, fontSize: 20),
+                    style: TextStyle(color: AppColors().plainText, fontSize: 20),
                   ),
                   Text(
                     'High',
-                    style: TextStyle(color: AppColors().text, fontSize: 20),
+                    style: TextStyle(color: AppColors().plainText, fontSize: 20),
                   ),
                   Text(
                     'Medium',
-                    style: TextStyle(color: AppColors().text, fontSize: 20),
+                    style: TextStyle(color: AppColors().plainText, fontSize: 20),
                   ),
                   Text(
                     'Low',
-                    style: TextStyle(color: AppColors().text, fontSize: 20),
+                    style: TextStyle(color: AppColors().plainText, fontSize: 20),
                   ),
                   Text(
                     'Low+',
-                    style: TextStyle(color: AppColors().text, fontSize: 20),
+                    style: TextStyle(color: AppColors().plainText, fontSize: 20),
                   ),
                 ],
               ),
