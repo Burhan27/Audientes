@@ -180,6 +180,7 @@ void selectIconDialog() {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         backgroundColor: AppColors().background,
       ),
@@ -193,6 +194,7 @@ void selectIconDialog() {
 
                 TextField(
                 style: TextStyle(color: Colors.redAccent),
+                  autofocus: true,
                   onChanged: (text) {
                     name = text;
                   },
@@ -285,19 +287,17 @@ void selectIconDialog() {
                 ],
               ),
 
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.width * .6,
-              child: RotatedBox (
-                quarterTurns: 3,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children:<Widget>[
 
-                      Container (
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
+              RotatedBox (
+                quarterTurns: 3,
+                child: Container (
+                    width:  MediaQuery.of(context).size.height * 0.35,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                        children: <Widget>[
+
+
                 SliderTheme(
                 data: SliderThemeData(
                     thumbColor: Color(0xff38E2CF),
@@ -400,17 +400,25 @@ void selectIconDialog() {
             ]
           ),
         padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-
       ),
+              ),
 
-                    ]
+
+
+             Container(
+               width: MediaQuery.of(context).size.width * .7,
+              child: FlatButton(
+                color: Color(0xff3f3a5a),
+                child: Text(
+                  'Create new program',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20),
                 ),
-              ),
-              ),
-
-              FlatButton(
-                color: Colors.green,
-
+                shape: RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(18.0),
+                    side: BorderSide()
+                ),
                 onPressed: () {
                   setState(() {
                   });
@@ -425,7 +433,7 @@ void selectIconDialog() {
                 },
               ),
 
-
+             ),
 
 
 

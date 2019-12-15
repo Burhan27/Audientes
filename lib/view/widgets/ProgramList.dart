@@ -30,9 +30,6 @@ class ProgramListState extends State<ProgramList> {
       });
     });
 
-    print(documents.toString());
-
-
   }
 
 
@@ -67,37 +64,8 @@ class ProgramListState extends State<ProgramList> {
                 children: <Widget>[
                   settingOption( programController.getColor(documents[index].data['color']),
                       programController.getIcon(documents[index].data['icon']), documents[index].data['name'], true),
-/*
-                  RotatedBox (
-                    child: Container(
-                      child: Column(
-                        children:<Widget>[
-                          mixer('High+', 0.0),
 
-                          ExpandableButton(
-                            child: Text(
-                              'Done',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20),
-                            ),
-                          )
-                        ],
-                      ),
-                      color: Color(0xff303030),
-                      width: MediaQuery.of(context)
-                          .size
-                          .width *
-                          0.95,
-                      margin:
-                      EdgeInsets.fromLTRB(5, 0, 5, 10),
-                      padding:
-                      EdgeInsets.fromLTRB(0, 0, 0, 5),
-                    ),
-                  ),
-*/
-
-              Container(
+             new Container(
                 child: Column(
                 children:<Widget>[
                   Row(
@@ -140,16 +108,17 @@ class ProgramListState extends State<ProgramList> {
                     ],
                   ),
 
-                  RotatedBox (
-                  quarterTurns: 3,
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children:<Widget>[
 
-                          Container (
+
+                  RotatedBox (
+                    quarterTurns: 3,
+                    child: Container (
+                      width:  MediaQuery.of(context).size.height * 0.35,
                             child: Column(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
                                 children: <Widget>[
+
                                   SliderTheme(
                                     data: SliderThemeData(
                                         thumbColor: Color(0xff38E2CF),
@@ -264,9 +233,10 @@ class ProgramListState extends State<ProgramList> {
 
                           ),
 
-                          ]
-                    ),
+
                   ),
+
+
                 ExpandableButton(
 
                   child: Column(
@@ -287,8 +257,7 @@ class ProgramListState extends State<ProgramList> {
                 color: Color(0xff303030),
                 width: MediaQuery.of(context)
                     .size
-                    .width *
-                0.95,
+                    .width,
                 margin:
                 EdgeInsets.fromLTRB(5, 0, 5, 10),
                 padding:
