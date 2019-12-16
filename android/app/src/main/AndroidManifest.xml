@@ -9,7 +9,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="audientes"
-        android:icon="@drawable/Audientes_logo">
+        android:icon="@drawable/logo.png">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
