@@ -1,3 +1,4 @@
+import 'package:audientes/AppColors.dart';
 import 'package:audientes/view/widgets/settingsOptionDropDown.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,42 +27,49 @@ class settingOptionState extends State<settingOption> {
   bool expanded;
   int B;
 
-  settingOptionState(this.color, this.iconData, this.optionText, this.expanded){
-    if(expanded){
+  settingOptionState(
+      this.color, this.iconData, this.optionText, this.expanded) {
+    if (expanded) {
       B = 0;
-    }
-    else{
-       B = 10;
+    } else {
+      B = 10;
     }
   }
 
-
-
-@override
+  @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: settingOptionDropDown(color, iconData, optionText),
-            flex: 8,
-          ),
-          Expanded(
-            child: Container(child: CupertinoSwitch(
-              value: isChecked,
-              onChanged: (value) {
-                setState(() {
-                  isChecked = !isChecked;
-                });
-              },
-            activeColor: Color(0xff38E2CF),),
-              alignment: Alignment.centerRight,),
-            flex: 2,
-          )
-        ],
+      child: Card(
+        color: AppColors().bar1,
+        elevation: 50,
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                child: Icon(
+                  iconData,
+                  color: Colors.white,
+                  size: 35,
+                ),
+                color: color,
+                margin: EdgeInsets.fromLTRB(5, 0, 5, 0),
+              ),
+              flex: 1,
+            ),
+            Expanded(
+              child: Container(
+                child: Text(
+                  optionText,
+                  style: TextStyle(fontSize: 20, color: AppColors().text),
+                ),
+              ),
+              flex: 5,
+            )
+          ],
+        ),
       ),
       margin: EdgeInsets.fromLTRB(5, 20, 5, 0),
       width: double.infinity,
-    color: Color(0xff202020),);
+    );
   }
 }

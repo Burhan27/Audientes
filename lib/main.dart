@@ -1,11 +1,15 @@
+import 'package:audientes/AppColors.dart';
 import 'package:audientes/BluetoothController.dart';
+import 'package:feature_discovery/feature_discovery.dart';
 import 'package:flutter/material.dart';
 import 'package:audientes/view/startscreen.dart';
 import 'package:audientes/view/settings.dart';
-import 'package:audientes/view/hearingTest.dart';
+import 'package:audientes/view/ResultScreen.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_crashlytics/flutter_crashlytics.dart';
 import 'dart:async';
 
+import 'controller/router.dart';
 
 void main() async {
   bool isInDebugMode = false;
@@ -24,28 +28,24 @@ void main() async {
   await FlutterCrashlytics().initialize();
 
   runZoned<Future<Null>>(() async {
-    runApp(MainApp( ));
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    runApp(MainApp());
   }, onError: (error, stackTrace) async {
     // Whenever an error occurs, call the `reportCrash` function. This will send
     // Dart errors to our dev console or Crashlytics depending on the environment.
-    await FlutterCrashlytics().reportCrash(error, stackTrace, forceCrash: false);
+    await FlutterCrashlytics()
+        .reportCrash(error, stackTrace, forceCrash: false);
   });
 }
-
-
-
-
-
-
-
-  //  onGenerateRoute: Router.generateRoute,
-  // initialRoute: '/',
 
 class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: NaviBar(),
+    return FeatureDiscovery(
+      child: MaterialApp(
+        onGenerateRoute: Router.generateRoute,
+        home: NaviBar(),
+      ),
     );
   }
 }
@@ -62,7 +62,7 @@ class _NaviBarState extends State<NaviBar> {
   final _pageOptions = [
     MyApp(),
     Settings(),
-    HeartinTest(),
+    ResultScreen(),
   ];
 
   void _onTabTapped(int index) {
@@ -70,16 +70,19 @@ class _NaviBarState extends State<NaviBar> {
       _selectedPage = index;
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pageOptions[_selectedPage], // new
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xff484848),
+        selectedItemColor: AppColors().highlight,
+        backgroundColor: AppColors().NavBar,
         unselectedItemColor: Color(0xffffffff),
-        onTap: _onTabTapped, // new
-        currentIndex: _selectedPage, // new
+        onTap: _onTabTapped,
+        // new
+        currentIndex: _selectedPage,
+        // new
         items: [
           new BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -96,8 +99,5 @@ class _NaviBarState extends State<NaviBar> {
         ],
       ),
     );
-
   }
-
 }
-
