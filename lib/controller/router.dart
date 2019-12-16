@@ -2,7 +2,7 @@ import 'package:audientes/view/HearingTest.dart';
 import 'package:audientes/view/ResultScreen.dart';
 import 'package:audientes/view/TestComplete.dart';
 import 'package:audientes/view/settings.dart';
-import 'package:audientes/view/widgets/mixer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:audientes/view/createProgram.dart';
 import 'package:audientes/view/startscreen.dart';
@@ -14,19 +14,19 @@ class Router{
   static Route<dynamic> generateRoute(RouteSettings settings){
     switch(settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => MyApp());
+        return CupertinoPageRoute(builder: (_) => MyApp());
       case '/settings':
-        return MaterialPageRoute(builder: (_) => Settings());
+        return CupertinoPageRoute(builder: (_) => Settings());
       case '/createProgram':
-        return MaterialPageRoute(builder: (_) => createProgram());
+        return CupertinoPageRoute(builder: (_) => createProgram());
       case '/hear':
-        return MaterialPageRoute(builder: (_) => HearingTest());
+        return CupertinoPageRoute(builder: (_) => HearingTest());
       case '/complete':
-        return MaterialPageRoute(builder: (_) => TestComplete());
+        return CupertinoPageRoute(builder: (_) => TestComplete());
       case '/result':
-        return MaterialPageRoute(builder: (_) => ResultScreen());
+        return CupertinoPageRoute(builder: (_) => ResultScreen());
       default:
-        return MaterialPageRoute(
+        return CupertinoPageRoute(
             builder: (_) => Scaffold(
               body: Center(
                   child: Text('Fejl!')),
