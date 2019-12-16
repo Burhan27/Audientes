@@ -3,8 +3,10 @@ import 'dart:typed_data';
 
 import 'package:audientes/AppColors.dart';
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:community_material_icon/community_material_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HearingTest extends StatefulWidget {
   @override
@@ -13,7 +15,7 @@ class HearingTest extends StatefulWidget {
 }
 
 class HearingTestState extends State<HearingTest> {
-  List<int> results = new List<int>();
+  List<String> results = new List<String>();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,9 @@ class HearingTestState extends State<HearingTest> {
             AvatarGlow(
               endRadius: MediaQuery.of(context).size.width / 3,
               child: FloatingActionButton(
-                  backgroundColor: Colors.deepPurple,
+                child: Icon(CommunityMaterialIcons.ear_hearing),
+                  backgroundColor: AppColors().inactive,
+                  focusColor: AppColors().highlight,
                   onPressed: addResult),
             ),
 
@@ -51,19 +55,22 @@ class HearingTestState extends State<HearingTest> {
   }
 
   void addResult(){
-    if(results.length < 6){
-      results.add(_generateRandom());
+    while(results.length < 12){
+      results.add(_generateRandom().toString());
     }
-    if(results.length >= 6){
-      Navigator.pop(context);
-    }
+    print("aaaa " + results.length.toString());
+    _saveResult();
+    Navigator.popAndPushNamed(context, '/complete');
   }
 
   int _generateRandom(){
     var random = new Random();
-    return random.nextInt(8) -1;
+    return random.nextInt(11) -1;
   }
 
-
+  _saveResult() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('results', results);
+  }
 
 }

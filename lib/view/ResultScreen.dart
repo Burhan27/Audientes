@@ -1,3 +1,4 @@
+import 'package:audientes/AppColors.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -7,39 +8,45 @@ class ResultScreen extends StatefulWidget {
 }
 
 class _TestHomeScreen extends State<ResultScreen> {
-
   bool test = true;
   List<List<double>> listing = new List<List<double>>();
   List<double> results = new List<double>();
   List<double> results2 = new List<double>();
 
   proceedDialog(BuildContext context) {
-    return showDialog(context: context, builder: (context) {
-      return AlertDialog(
-        title: Text("Warning!"),
-        backgroundColor: Colors.grey,
-        content: Text("You got an ongoing test, "
-            "are you sure, that you want to proceed?"),
-        actions: <Widget>[
-        MaterialButton(
-            elevation: 5.0,
-            child: Text("Yes, start a new test"),
-            color: Colors.red,
-            textColor: Colors.white,
-            onPressed: () => Navigator.pushNamed(context,'/hear'),
-          ),
-          MaterialButton(
-            elevation: 5.0,
-            color: Colors.green,
-            textColor: Colors.white,
-            child: Text("Go back"),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-      )
-        ],
-      );
-    });
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Warning!",
+              style: TextStyle(
+                  color: AppColors().plainText),
+            ),
+            backgroundColor: AppColors().bar1,
+            content: Text("You got an ongoing test, "
+                "are you sure, that you want to proceed?",
+            style: TextStyle(
+                color: AppColors().plainText),),
+            actions: <Widget>[
+              MaterialButton(
+                elevation: 5.0,
+                child: Text("Yes, start a new test"),
+                color: AppColors().red1,
+                textColor: Colors.white,
+                onPressed: () => Navigator.popAndPushNamed(context, '/hear'),
+              ),
+              MaterialButton(
+                elevation: 5.0,
+                color: AppColors().green1,
+                textColor: Colors.white,
+                child: Text("Go back"),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          );
+        });
   }
 
   @override
@@ -71,7 +78,6 @@ class _TestHomeScreen extends State<ResultScreen> {
     results2.add(5);
     results2.add(7);
 
-
     listing.add(results);
     listing.add(results2);
   }
@@ -85,7 +91,7 @@ class _TestHomeScreen extends State<ResultScreen> {
         show: true,
         getDrawingHorizontalGridLine: (value) {
           return const FlLine(
-            color: Colors.green,
+            color: Color(0xff2271bf),
             strokeWidth: 1,
           );
         },
@@ -100,13 +106,13 @@ class _TestHomeScreen extends State<ResultScreen> {
         bottomTitles: SideTitles(
           showTitles: true,
           textStyle: TextStyle(
-            color: const Color(0xff72719b),
+            color: AppColors().text,
             fontWeight: FontWeight.bold,
             fontSize: 16,
           ),
           getTitles: (value) {
             switch (value.toInt()) {
-             case 1:
+              case 1:
                 return '125';
               case 2:
                 return '250';
@@ -120,7 +126,6 @@ class _TestHomeScreen extends State<ResultScreen> {
                 return '4k';
               case 7:
                 return '8k';
-
             }
             return '';
           },
@@ -129,36 +134,36 @@ class _TestHomeScreen extends State<ResultScreen> {
         leftTitles: SideTitles(
           showTitles: true,
           textStyle: TextStyle(
-            color: const Color(0xff75729e),
+            color: AppColors().text,
             fontWeight: FontWeight.bold,
             fontSize: 14,
           ),
           getTitles: (value) {
             switch (value.toInt()) {
               case -1:
-                return '-10';
-              case 0:
-                return '0';
-              case 1:
-                return '10';
-              case 2:
-                return '20';
-              case 3:
-                return '30';
-              case 4:
-                return '40';
-              case 5:
-                return '50';
-              case 6:
-                return '60';
-              case 7:
-                return '70';
-              case 8:
-                return '80';
-              case 9:
-                return '90';
-              case 10:
                 return '100';
+              case 0:
+                return '90';
+              case 1:
+                return '80';
+              case 2:
+                return '70';
+              case 3:
+                return '60';
+              case 4:
+                return '50';
+              case 5:
+                return '40';
+              case 6:
+                return '30';
+              case 7:
+                return '20';
+              case 8:
+                return '10';
+              case 9:
+                return '0';
+              case 10:
+                return '-10';
             }
             return '';
           },
@@ -169,7 +174,7 @@ class _TestHomeScreen extends State<ResultScreen> {
           show: true,
           border: Border(
             bottom: BorderSide(
-              color: const Color(0xff4e4965),
+              color: AppColors().inactive,
               width: 4,
             ),
             left: BorderSide(
@@ -190,12 +195,8 @@ class _TestHomeScreen extends State<ResultScreen> {
     );
   }
 
-
   List<LineChartBarData> linesBarData2(List<double> data) {
-
-
     return [
-
       LineChartBarData(
         spots: [
           FlSpot(2, data.elementAt(0)),
@@ -208,7 +209,7 @@ class _TestHomeScreen extends State<ResultScreen> {
         isCurved: true,
         curveSmoothness: 0,
         colors: [
-         Colors.red,
+          AppColors().green1,Colors.greenAccent,Colors.green,
         ],
         barWidth: 2,
         isStrokeCapRound: true,
@@ -219,9 +220,8 @@ class _TestHomeScreen extends State<ResultScreen> {
           show: false,
         ),
       ),
-
-
       LineChartBarData(
+
         spots: [
           FlSpot(2, data.elementAt(6)),
           FlSpot(3, data.elementAt(7)),
@@ -233,7 +233,7 @@ class _TestHomeScreen extends State<ResultScreen> {
         isCurved: true,
         curveSmoothness: 0,
         colors: [
-          Colors.red,
+          AppColors().red1, Colors.redAccent,
         ],
         barWidth: 2,
         isStrokeCapRound: true,
@@ -244,70 +244,64 @@ class _TestHomeScreen extends State<ResultScreen> {
           show: false,
         ),
       ),
-
-
-
-
     ];
   }
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-        backgroundColor: Color(0xff131313),
-        title: Text('Audientes'),
-         ),
-    body: Container(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-
-    Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
-      padding: EdgeInsets.symmetric(horizontal: 10), //Tjek lige det her
-      height: ((MediaQuery.of(context).size.height)/2.3),
-    width: MediaQuery.of(context).size.width,
-    child: ListView.builder(
-     itemCount: listing.length,
-        scrollDirection: Axis.horizontal,
-      itemBuilder: (BuildContext  ctxt, int index) {
-        return new Container(
-            decoration: new BoxDecoration(
-            borderRadius: new BorderRadius.circular(16.0),
-        color: Colors.white,
+          backgroundColor: AppColors().bar,
+          title: Text('Audientes'),
         ),
-        margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
-        padding: EdgeInsets.symmetric(horizontal: 10), //Tjek lige det her
-        width: MediaQuery.of(context).size.width*0.8,
-        child: Column(
-          children: <Widget>[
-            Text(
-          '03/11/2019',
-          style: TextStyle(
-            color: const Color(0xff827daa),
-            fontSize: 16,
-          ),
-        ),
-            FlChart(
-              swapAnimationDuration: Duration(milliseconds: 250),
-              chart: LineChart(
-                  sampleData2(listing.elementAt(index))
-            )
-            )
-          ],
+        body: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 5),
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                //Tjek lige det her
+                height: ((MediaQuery.of(context).size.height) / 2),
+                width: MediaQuery.of(context).size.width,
+                child: ListView.builder(
+                  itemCount: listing.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext ctxt, int index) {
+                    return new Container(
+                      decoration: new BoxDecoration(
+                        borderRadius: new BorderRadius.circular(16.0),
+                        color: AppColors().bar,
+                      ),
+                      margin:
+                          EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      //Tjek lige det her
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: MediaQuery.of(context).size.height * 0.6,
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            '03/11/2019',
+                            style: TextStyle(
+                              color: AppColors().text,
+                              fontSize: 16,
+                            ),
+                          ),
+                          FlChart(
+                              swapAnimationDuration:
+                                  Duration(milliseconds: 250),
+                              chart: LineChart(
+                                  sampleData2(listing.elementAt(index))),
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
 
-        ),
-
-        );
-      },
-    ),
-    ),
-
-
-      /*
+              /*
 
             FlChart(
               swapAnimationDuration: Duration(milliseconds: 250),
@@ -357,35 +351,36 @@ class _TestHomeScreen extends State<ResultScreen> {
 
 */
 
-     RaisedButton(
-        child: Text('Start Hearing Test'),
-        onPressed: () {
-          proceedDialog(context);
-        },
-       color: Colors.white,
-        highlightColor: Colors.green,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0)),
-      ),
-
-     RaisedButton(
-       child: Text('Resume Hearing Test'),
-       onPressed:  test ? null : null,
-       //() => whatToDoOnPressed i stedet for sidste null
-       color: Colors.white,
-       disabledColor: Colors.grey,
-       highlightColor: Colors.green,
-       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0)),
-     ),
-
-
-
-      ],
-    ),
-        color: Color(0xff131313),
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-    )
-
-    );
+              RaisedButton(
+                child: Text('Start Hearing Test',
+                  style: TextStyle(
+                      color:AppColors().text ),),
+                onPressed: () {
+                  proceedDialog(context);
+                },
+                color: AppColors().bar1,
+                highlightColor: AppColors().highlight,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6.0)),
+              ),
+              RaisedButton(
+                child: Text('Resume Hearing Test',
+                style: TextStyle(
+                    color:Colors.grey ),
+                ),
+                onPressed: test ? null : null,
+                //() => whatToDoOnPressed i stedet for sidste null
+                color: Colors.white,
+                disabledColor: AppColors().bar,
+                highlightColor: AppColors().highlight,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6.0)),
+              ),
+            ],
+          ),
+          color: AppColors().background,
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+        ));
   }
 }

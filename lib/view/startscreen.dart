@@ -39,10 +39,26 @@ class StartScreen extends State<MyApp> {
                     Expanded(
                       child: GestureDetector(
                         child: Container(
-                          child: Text("L"),
+                          child: Text(
+                            "L",
+                            style: TextStyle(color: AppColors().text),
+                          ),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.deepPurple,
+                            color: AppColors().bar2,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 5.0,
+                                // has the effect of softening the shadow
+                                spreadRadius: 2.0,
+                                // has the effect of extending the shadow
+                                offset: Offset(
+                                  1.0, // horizontal, move right 10
+                                  1.0, // vertical, move down 10
+                                ),
+                              )
+                            ],
                           ),
                           height: MediaQuery.of(context).size.width / 6,
                           width: MediaQuery.of(context).size.height / 6,
@@ -59,16 +75,34 @@ class StartScreen extends State<MyApp> {
                     Expanded(
                       child: GestureDetector(
                         child: Container(
-                          child: Text("R"),
+                          child: Text(
+                            "R",
+                            style: TextStyle(color: AppColors().text),
+                          ),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: Colors.deepPurple,
+                            color: AppColors().bar2,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 5.0,
+                                // has the effect of softening the shadow
+                                spreadRadius: 2.0,
+                                // has the effect of extending the shadow
+                                offset: Offset(
+                                  1.0, // horizontal, move right 10
+                                  1.0, // vertical, move down 10
+                                ),
+                              )
+                            ],
                           ),
                           height: MediaQuery.of(context).size.width / 6,
                           width: MediaQuery.of(context).size.height / 6,
                           alignment: Alignment.center,
                         ),
-                        onTap: () { showDialogRight(); },
+                        onTap: () {
+                          showDialogRight();
+                        },
                       ),
                       flex: 4,
                     ),
@@ -77,6 +111,18 @@ class StartScreen extends State<MyApp> {
                 color: AppColors().bar,
               ),
             ),
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              child: Column(
+                children: <Widget>[
+                  Text("Recent Result",
+                  style: TextStyle(
+                    color: AppColors().text,
+                    fontSize: 20,
+                  ),)
+                ],
+              ),
+            )
           ],
         ),
         color: AppColors().background,
@@ -153,14 +199,11 @@ class StartScreen extends State<MyApp> {
     rightEar = prefs.getDouble("Rightear") ?? 0.0;
   }
 
-
   @override
   void initState() {
     super.initState();
     readEar();
   }
-
-
 
   Widget programIcon() {
     fillIconList(iconList);
@@ -199,7 +242,6 @@ class StartScreen extends State<MyApp> {
                           child: RawMaterialButton(
                             onPressed: () {
                               Navigator.pop(context);
-
                             },
                             shape: new CircleBorder(),
                             child: new Icon(
@@ -324,6 +366,7 @@ class DialogPickerState extends State<DialogPicker> {
                 quarterTurns: 3,
                 child: Container(
                   child: Slider(
+
                     max: 100.0,
                     min: 0.0,
                     value: ear,
@@ -335,7 +378,7 @@ class DialogPickerState extends State<DialogPicker> {
                       });
                     },
                   ),
-                  color: Colors.deepPurple,
+                  color: AppColors().bar2,
                   height: 50,
                 ),
               ),

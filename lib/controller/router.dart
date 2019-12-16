@@ -1,4 +1,6 @@
 import 'package:audientes/view/HearingTest.dart';
+import 'package:audientes/view/ResultScreen.dart';
+import 'package:audientes/view/TestComplete.dart';
 import 'package:audientes/view/settings.dart';
 import 'package:audientes/view/widgets/mixer.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,10 @@ class Router{
         return MaterialPageRoute(builder: (_) => createProgram());
       case '/hear':
         return MaterialPageRoute(builder: (_) => HearingTest());
+      case '/complete':
+        return MaterialPageRoute(builder: (_) => TestComplete());
+      case '/result':
+        return MaterialPageRoute(builder: (_) => ResultScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
