@@ -166,6 +166,7 @@ class createProgramState extends State<createProgram> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: AppColors().highlight),
         backgroundColor: AppColors().background,
+        title: Text('Create New Program'),
       ),
       body: Container(
           width: double.infinity,
@@ -485,11 +486,21 @@ class createProgramState extends State<createProgram> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: new Text(reason),
-          content: new Text(message),
+          title: new Text(
+            reason,
+            style: TextStyle(color: AppColors().plainText, fontSize: 20),
+          ),
+          content: new Text(
+            message,
+            style: TextStyle(color: AppColors().plainText, fontSize: 16),
+          ),
+          backgroundColor: AppColors().bar1,
           actions: <Widget>[
             new FlatButton(
-              child: new Text("Okay"),
+              child: new Text(
+          'Okay',
+          style: TextStyle(color: AppColors().plainText, fontSize: 20),
+        ),
               onPressed:() {
                 Navigator.of(context).pop();
               },

@@ -35,7 +35,7 @@ class StartScreen extends State<MyApp> {
               clipper: CurveClip(),
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 2,
+                height: MediaQuery.of(context).size.height / 2.8,
                 child: Row(
                   children: <Widget>[
                     Expanded(

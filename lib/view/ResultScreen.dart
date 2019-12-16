@@ -12,6 +12,7 @@ class _TestHomeScreen extends State<ResultScreen> {
   List<List<double>> listing = new List<List<double>>();
   List<double> results = new List<double>();
   List<double> results2 = new List<double>();
+  List<double> results3 = new List<double>();
 
   proceedDialog(BuildContext context) {
     return showDialog(
@@ -65,21 +66,35 @@ class _TestHomeScreen extends State<ResultScreen> {
     results.add(5);
     results.add(7);
 
-    results2.add(2);
-    results2.add(4);
+    results2.add(3);
     results2.add(6);
-    results2.add(7);
-    results2.add(4);
-    results2.add(7);
-    results2.add(6);
+    results2.add(8);
     results2.add(1);
-    results2.add(9);
+    results2.add(3);
+    results2.add(4);
     results2.add(2);
-    results2.add(5);
-    results2.add(7);
+    results2.add(4);
+    results2.add(8);
+    results2.add(4);
+    results2.add(1);
+    results2.add(2);
 
-    listing.add(results);
+    results3.add(5);
+    results3.add(7);
+    results3.add(9);
+    results3.add(5);
+    results3.add(4);
+    results3.add(3);
+    results3.add(4);
+    results3.add(6);
+    results3.add(8);
+    results3.add(6);
+    results3.add(4);
+    results3.add(3);
+
+    listing.add(results3);
     listing.add(results2);
+    listing.add(results);
   }
 
   LineChartData sampleData2(List<double> data) {
@@ -252,7 +267,7 @@ class _TestHomeScreen extends State<ResultScreen> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors().bar,
-          title: Text('Audientes'),
+          title: Text('Test & Results'),
         ),
         body: Container(
           child: Column(
