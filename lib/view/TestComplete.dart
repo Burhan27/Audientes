@@ -134,7 +134,7 @@ class TestCompleteState extends State<TestComplete> {
                       alignment: Alignment.centerLeft,
                       padding: EdgeInsets.only(top: 3, bottom: 3),
                       child: Text(
-                        'save \nresults',
+                        'Save \nresults',
                         style: TextStyle(color: AppColors().text, fontSize: 20),
                         textAlign: TextAlign.center,
                       ),
